@@ -1,5 +1,5 @@
 {
-  "description": "项目配置文件",
+  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -18,7 +18,7 @@
     "minified": true,
     "autoAudits": false,
     "newFeature": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "uploadWithSourceMap": true,
     "useIsolateContext": true,
     "nodeModules": false,
@@ -27,25 +27,38 @@
     "useApiHook": true,
     "useApiHostProcess": true,
     "showShadowRootInWxmlPanel": true,
-    "packNpmManually": false,
     "enableEngineNative": false,
-    "packNpmRelationList": [],
     "minifyWXSS": true,
     "showES6CompileOption": false,
     "minifyWXML": true,
+    "useStaticServer": true,
+    "checkInvalidKey": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "disableUseStrict": false,
+    "useCompilerPlugins": [
+      "typescript",
+      "less"
+    ],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ]
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.4",
+  "libVersion": "2.17.0",
   "appid": "wxcc963f9c214e45a6",
   "projectname": "miniprogram-92",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "simulatorPluginLibVersion": {}
 }

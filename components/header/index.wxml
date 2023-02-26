@@ -1,0 +1,12 @@
+<!--pages/components/header/index.wxml-->
+<view class="nav-bar w100 {{(showBack||bgColor) ? 'pos-fix' : 'pos-abs'}} flex flexcc {{bgColor ? 'bg-white' : ''}}" style="height: {{topNavHeight+2}}px;padding-top: {{safeTop-2}}px;">
+  <view class="pos-rel h100 w100 flex flexac">
+    <view wx:if="{{showBack}}" class="pos-abs h100 page-back {{themBlack || bgColor ? 'page-back-black' : ''}}" style="height: {{topNavHeight - safeTop}}px;" catchtap="pageBack"></view>
+    <image wx:if="{{showLogo}}" src="../../images/logo@2x.png" mode="widthFix" class="nav-logo" style="height: {{topNavHeight - safeTop - 15}}px;"></image>
+    <view wx:else="">
+      <view wx:if="{{title}}">{{title}}</view>
+      <image wx:else=""  src="../../images/logo@2x.png" mode="widthFix" class="nav-logo" style="height: {{topNavHeight - safeTop - 15}}px;"></image>
+  
+    </view>
+  </view>
+</view>

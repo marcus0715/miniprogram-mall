@@ -1,0 +1,38 @@
+/* pages/components/header/index.wxss */
+.nav-bar {
+  height: 44rpx;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 999999;
+  /* box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1); */
+  transition: height .25s;
+}
+.nav-btns {
+  width: 158rpx;
+  height: 58rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #EAEAEA;
+  left: 20rpx;
+  top: 50%;
+  margin-top: -29rpx;
+}
+.nav-btn-line {
+  width: 1rpx;
+  height: 40rpx;
+  background: #CCCCCC;
+}
+.nav-logo {
+  height: 46rpx;
+  width: 402rpx;
+  margin-left: 36rpx;
+}
+.page-back {
+  width: 88rpx;
+  height: 88rpx;
+  /* position: sticky; */
+  left: 20rpx;
+  bottom: 0;
+  z-index: 7777;
+}
