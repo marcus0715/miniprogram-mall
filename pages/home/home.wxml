@@ -1,4 +1,5 @@
 <!--pages/home/home.wxml-->
+<headerView showBack="false" showLogo="true" bgWhite="true"/>
 <view>
   <view class="search-bar__container">
     <van-search value="{{searchVal}}" bind:search="search" placeholder="请输入搜索关键词进行搜索" />

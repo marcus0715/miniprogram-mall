@@ -4,5 +4,6 @@
     "van-search": "@vant/weapp/search/index",
     "van-icon": "@vant/weapp/icon/index",
     "product-list": "/components/productList/index"
-  }
+  },
+  "navigationStyle": "custom"
 }

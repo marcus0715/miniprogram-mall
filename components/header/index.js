@@ -8,9 +8,9 @@ Component({
     addGlobalClass: true,
   },
   properties: {
-    safeVal: {
-      type: Object,
-    },
+    // safeVal: {
+    //   type: Object,
+    // },
     showBack: {
       type: Boolean,
       value: true,
@@ -43,16 +43,25 @@ Component({
     bgColor: false,
   },
   lifetimes: {
-    attached() {},
+    attached() {
+      const safeVal = wx.getStorageSync('safeVal')
+      if(safeVal){
+        this.setData({
+          safeTop: (safeVal && safeVal.top) || 0,
+          safeBottom: (safeVal && safeVal.bottom) || 0,
+          topNavHeight: (safeVal && safeVal.topNavHeight) || 44,
+        });
+      }
+    },
   },
   observers: {
-    safeVal(safeVal) {
-      this.setData({
-        safeTop: (safeVal && safeVal.top) || 0,
-        safeBottom: (safeVal && safeVal.bottom) || 0,
-        topNavHeight: (safeVal && safeVal.topNavHeight) || 44,
-      });
-    },
+    // safeVal(safeVal) {
+    //   this.setData({
+    //     safeTop: (safeVal && safeVal.top) || 0,
+    //     safeBottom: (safeVal && safeVal.bottom) || 0,
+    //     topNavHeight: (safeVal && safeVal.topNavHeight) || 44,
+    //   });
+    // },
     bgWhite(bgWhite) {
       this.setData({
         bgColor: bgWhite,

@@ -5,7 +5,7 @@ Component({
    */
   properties: {
     productList: {
-      type: [],
+      type: Array,
       value: []
     }
   },

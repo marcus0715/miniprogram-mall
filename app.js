@@ -1,6 +1,6 @@
 // app.js
 import { apiLogin } from './api/user';
-
+import { safeValue } from './utils/wxSys'
 App({
   onLaunch() {
     const _this = this;
@@ -10,7 +10,7 @@ App({
         _this.globalData.SystemInfo = res;
       },
     });
-
+    safeValue()
   },
   globalData: {
     userInfo: null,

@@ -1,5 +1,6 @@
 /* pages/components/header/index.wxss */
 .nav-bar {
+  position: sticky;
   height: 44rpx;
   top: 0;
   left: 0;
