@@ -1,0 +1,6 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="order-top">
+  <text>订单 </text>
+  <text>{{orderNumber}}</text>
+  <text class="order-booked">已预订</text>
+</view>
