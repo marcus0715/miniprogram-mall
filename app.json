@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/order/index",
     "pages/category/index",
-    "pages/userCenter/index",
-    "pages/home/home"
+    "pages/userCenter/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

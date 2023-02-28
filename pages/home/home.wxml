@@ -1,2 +1,21 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view>
+  <view class="search-bar__container">
+    <van-search value="{{searchVal}}" bind:search="search" placeholder="请输入搜索关键词进行搜索" />
+    <van-icon name="comment-o" info="{{messageCount}}" size="20px"/>
+  </view>
+  <view class="main-content__container">
+    <view class="mall-image__container">
+      <image mode="widthFix" lazy-load src="{{logoUrl}}"/>
+      <view class="image-description__container">
+        <text>欢迎访问Honeywall\n\r智慧建筑官方商城</text>
+      </view>
+    </view>
+    <view class="product-list__container">
+      <view class="product-title">选购我们的智能建筑科技产品目录</view>
+      <view class="product-subtitle">获取最受欢迎的消防、安全、舒适和节能产品的定价和供货情况</view>
+      <product-list productList="{{productList}}"/>
+    </view>
+  </view>
+</view>
+

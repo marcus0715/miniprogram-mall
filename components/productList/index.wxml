@@ -1,0 +1,14 @@
+<!--components/productList/index.wxml-->
+<view class="produst-list__container">
+  <van-grid column-num="3" gutter="{{ -15 }}" border="{{false}}">
+  <van-grid-item use-slot wx:for="{{ productList }}" wx:key="index" wx:for-item="product">
+    <image
+      class="product-item__image"
+      lazy-load
+      mode="aspectFill"
+      src="{{product.url}}"
+    />
+    <text class="product-item__title">{{product.title}}</text>
+  </van-grid-item>
+</van-grid>
+</view>

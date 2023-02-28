@@ -1,18 +1,28 @@
 // pages/home/home.ts
+import {getImageUrl} from '../../utils/tools'
+import {getProductList} from '../../api/productList'
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+      logoUrl: getImageUrl(1000, 410),
+      searchVal: '',
+      messageCount: 9,
+      productList: []
   },
-
+  search(event) {
+    console.log(event.detail)
+  },
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad() {
-
+  async onLoad() {
+    const list = await getProductList()
+    this.setData({
+      productList: list
+    })
   },
 
   /**
