@@ -1,0 +1,42 @@
+<!--components/orderDetail/index.wxml-->
+<view wx:for="{{merchDetail}}" wx:key="merchId">
+  <view class="merch-item">
+    <text>{{item.merchName}}</text>
+    <text class="right-text status-text">{{item.merchStatus}}</text>
+  </view>
+  <view class="merch-title" bindtap="_showMerchDetail" data-merchid="{{item.merchId}}">
+    <text>控制器</text>
+    <van-icon wx:if="{{!item.showDetail}}" name="arrow-down" class="right-text arrow-icon"/>
+    <van-icon wx:elif="{{item.showDetail}}" name="arrow-up" class="right-text arrow-icon"/>
+  </view>
+  <view wx:if="{{item.showDetail}}">
+    <view class="merch-info">
+      <text>预计发货时间：</text>
+      <text class="right-text">{{item.predictDate}}</text>
+    </view>
+    <view class="merch-info">
+      <text>订购数量：</text>
+      <text class="right-text">{{item.orderCount}}</text>
+    </view>
+    <view class="merch-info">
+      <text>发货数量：</text>
+      <text class="right-text">{{item.deliverCount?item.deliverCount:'-'}}</text>
+    </view>
+    <view class="merch-info">
+      <text>未发货数量：</text>
+      <text class="right-text">{{item.noDeliverCount?item.noDeliverCount:'-'}}</text>
+    </view>
+    <view class="merch-info">
+      <text>承运商：</text>
+      <text class="right-text">{{item.carrier?item.carrier:'-'}}</text>
+    </view>
+    <view class="merch-info">
+      <text>运单号：</text>
+      <text class="right-text">{{item.waybillNumber?item.waybillNumber:'-'}}</text>
+    </view>
+    <view class="merch-btn-group">
+      <text class="merch-btn">发票</text>
+      <text class="merch-btn right-text">提货单</text>
+    </view>
+  </view>
+</view>

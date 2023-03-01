@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    
+    "van-button": "@vant/weapp/button/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "merch-detail": "/components/merchDetail/index"
   },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",

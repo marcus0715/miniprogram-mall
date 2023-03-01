@@ -1,18 +1,25 @@
 // pages/orderDetail/orderDetail.ts
+import {getorderInfo} from '../../api/orderDetail'
 Page({
   
   /**
    * 页面的初始数据
    */
   data: {
-    orderNumber: '0260855311',
+    orderInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+  async onLoad() {
+      let orderDetail = await getorderInfo();
+      for (let i = 0; i < orderDetail.merchDetail.length; i++) {
+        orderDetail.merchDetail[i].showDetail = false;
+      }
+      this.setData({
+        orderInfo: orderDetail
+      });
   },
 
   /**

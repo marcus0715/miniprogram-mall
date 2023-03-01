@@ -1,6 +1,36 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="order-top">
   <text>订单 </text>
-  <text>{{orderNumber}}</text>
-  <text class="order-booked">已预订</text>
+  <text>{{orderInfo.orderNumber}}</text>
+  <text class="order-booked">{{orderInfo.orderStatus}}</text>
+</view>
+<view class="order-block">
+  <view>
+    <text>公司：</text>
+    <text class="text-right">{{orderInfo.orderCompany}}</text>
+  </view>
+  <view class="order-title">
+    <text>PO编号：</text>
+    <text class="text-right">{{orderInfo.PONumber}}</text>
+  </view>
+  <view class="order-title">
+    <text>订购日期：</text>
+    <text class="text-right">{{orderInfo.orderDate}}</text>
+  </view>
+  <view class="order-title">
+    <text>总计：</text>
+    <text class="text-right">{{orderInfo.totalPrice}}</text>
+  </view>
+  <view class="order-show-more">
+    <text class="show-more-btn">查看更多</text>
+    <van-icon name="arrow-down" class="more-icon"/>
+  </view>
+</view>
+<view class="order-block">
+  <view>
+    <text>商品明细</text>
+  </view>
+  <view>
+    <merch-detail merchDetail="{{orderInfo.merchDetail}}"/>
+  </view>
 </view>
