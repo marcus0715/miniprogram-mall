@@ -5,7 +5,9 @@ Page({
    * Page initial data
    */
   data: {
-
+    userID: "0001999250",
+    userName: "jordan wang",
+    userEmail: "jordan.wang@honeywell.com"
   },
 
   /**

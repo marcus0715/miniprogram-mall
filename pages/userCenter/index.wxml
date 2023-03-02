@@ -1,2 +1,35 @@
 <!--pages/userCenter/index.wxml-->
-<text>pages/userCenter/index.wxml</text>
+<view>
+  <div class="avatarInfo">
+    <van-icon name="https://fastly.jsdelivr.net/npm/@vant/assets/icon-demo.png"  style="font-size: 60px;margin: 5px"/>
+    <div class="userName">
+      <div>{{userName}}</div>
+      <div>{{userEmail}}</div>
+    </div>
+  </div>
+  <div class="basicInfo">
+    <div>
+      <van-icon name="phone-o" style="font-size: 40rpx;margin-right: 5px;" />
+      <span style="font-size: 30rpx;">电话</span>
+    </div>
+    <div style="display: flex;">
+      <van-icon name="label-o"  style="font-size: 40rpx;margin-right: 5px;"/>
+      <div style="display: flex;flex-direction: column;">
+        <span style="font-size: 30rpx;">客户类型</span>
+        <span style="font-size: 30rpx;">Distributor</span>
+      </div>
+    </div>
+  </div>
+  <view class="changeAccount">
+    <span>{{userID}}</span>
+    <span>
+      <van-icon name="exchange" />
+      <text>切换账号</text>
+    </span>
+  </view>
+  <view>
+    <userCenterList></userCenterList>
+  </view>
+  <view class="exit">退出登录</view>
+</view>
+

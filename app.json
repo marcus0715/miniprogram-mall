@@ -45,6 +45,9 @@
   },
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "headerView": "components/header/index"
+    "headerView": "components/header/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index",
+    "userCenterList": "components/userCenterList/index"
   }
 }

@@ -1,0 +1,6 @@
+<view wx:for="{{array}}" wx:for-item="itemName" class="list">
+  <view bindtap="onTap" data-id="{{itemName.id}}">
+    <van-icon name="{{itemName.icon}}" style="font-size: 40rpx;"/>
+    <span style="font-size: 30rpx;margin-left: 10px;">{{itemName.text}}</span>
+  </view>
+</view>
