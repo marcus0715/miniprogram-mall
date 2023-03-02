@@ -34,6 +34,7 @@
 </view>
 <view class="order-block">
   <view>
+    <text class="vertical-line"></text>
     <text>商品明细</text>
   </view>
   <view>
