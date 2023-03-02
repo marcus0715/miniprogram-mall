@@ -5,6 +5,8 @@ export const orderDetailInfo = {
   PONumber: 'Q-00949113',
   orderDate: '2023-02-21',
   totalPrice: '￥494,756.88',
+  discount: '20%',
+  orderCount: '16',
   merchDetail: [
     {
       merchId: 'merchdians01',

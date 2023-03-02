@@ -1,0 +1,15 @@
+<!--components/sortColumns/index.wxml-->
+  <view class="sort-column_container">
+    <view class="sort-column__item" wx:for="{{ currentSortItems }}" wx:key="index" wx:for-item="sortItem">
+        <text>{{sortItem.label}}</text>
+       <view data-item="{{sortItem}}" bindtap="sort" class="sort-icon">
+          <van-icon name="arrow-up" color="{{sortItem.sort === 'ASE' ? 'red' : ''}}" size="20rpx"/>
+          <van-icon name="arrow-down" color="{{sortItem.sort === 'DESC' ? 'red' : ''}}" size="20rpx"/>
+       </view>
+    </view>
+    <view wx:if="{{currentDisplayMode}}" class="sort-column__item">
+      <van-icon wx:if="{{currentDisplayMode === 'grid'}}" name="wap-nav" size="36rpx" bindtap="changeMode"/>
+      <van-icon wx:else name="qr" size="36rpx" bindtap="changeMode"/>
+    </view>
+  </view>
+

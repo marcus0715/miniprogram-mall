@@ -5,8 +5,5 @@
     "van-icon": "@vant/weapp/icon/index",
     "merch-detail": "/components/merchDetail/index"
   },
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "订单详情",
-  "navigationBarTextStyle": "black"
+  "navigationStyle": "custom"
 }

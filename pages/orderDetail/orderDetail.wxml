@@ -1,4 +1,5 @@
 <!--pages/orderDetail/orderDetail.wxml-->
+<headerView showBack="{{showBack}}" showLogo="{{showLogo}}" bgWhite="true" title="{{title}}"/>
 <view class="order-top">
   <text>订单 </text>
   <text>{{orderInfo.orderNumber}}</text>
@@ -20,6 +21,16 @@
   <view class="order-title">
     <text>总计：</text>
     <text class="text-right">{{orderInfo.totalPrice}}</text>
+  </view>
+  <view wx:if="{{showMore}}">
+    <view class="order-title">
+      <text>折扣：</text>
+      <text class="text-right">{{orderInfo.discount}}</text>
+    </view>
+    <view class="order-title">
+      <text>订购数量：</text>
+      <text class="text-right">{{orderInfo.orderCount}}</text>
+    </view>
   </view>
   <view class="order-show-more">
     <view class="show-more-layout" bindtap="showMoreInfo" wx:if="{{!showMore}}">

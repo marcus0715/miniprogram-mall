@@ -30,10 +30,14 @@
   margin-left: 36rpx;
 }
 .page-back {
-  width: 88rpx;
+  width: 100rpx;
   height: 88rpx;
   /* position: sticky; */
   left: 20rpx;
   bottom: 0;
   z-index: 7777;
+}
+.back-title {
+  display: inline-block;
+  margin-left: 6rpx;
 }
