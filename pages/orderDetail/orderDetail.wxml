@@ -22,8 +22,14 @@
     <text class="text-right">{{orderInfo.totalPrice}}</text>
   </view>
   <view class="order-show-more">
-    <text class="show-more-btn">查看更多</text>
-    <van-icon name="arrow-down" class="more-icon"/>
+    <view class="show-more-layout" bindtap="showMoreInfo" wx:if="{{!showMore}}">
+      <text class="show-more-btn">查看更多</text>
+      <van-icon name="arrow-down" class="more-icon"/>
+    </view>
+    <view class="show-more-layout" bindtap="showMoreInfo" wx:elif="{{showMore}}">
+      <text class="show-more-btn">收起</text>
+      <van-icon name="arrow-up" class="more-icon"/>
+    </view>
   </view>
 </view>
 <view class="order-block">
