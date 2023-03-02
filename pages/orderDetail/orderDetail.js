@@ -7,7 +7,10 @@ Page({
    */
   data: {
     orderInfo: {},
-    showMore: false
+    showMore: false,
+    showBack: true,
+    showLogo: false,
+    title: '订单详情'
   },
 
   showMoreInfo() {
