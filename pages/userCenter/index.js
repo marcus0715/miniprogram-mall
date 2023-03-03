@@ -7,14 +7,18 @@ Page({
   data: {
     userID: "0001999250",
     userName: "jordan wang",
-    userEmail: "jordan.wang@honeywell.com"
+    userEmail: "jordan.wang@honeywell.com",
+    navigationHeight: 44
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad() {
-
+    const safeVal = wx.getStorageSync('safeVal')
+    this.setData({
+        navigationHeight: safeVal.topNavHeight
+    })
   },
 
   /**
