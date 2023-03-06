@@ -1,0 +1,15 @@
+<!--pages/addressBook/addressBook.wxml-->
+<view class="topTab">
+  <!--top bar-->
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab===index ? 'on' : ''}}" wx:for="{{tabItem}}" bindtap="switchNav" wx:key="index" data-current="{{index}}" data-type="{{item.type}}">
+      {{item.text}}
+    </view>
+  </view>
+  <!--content-->
+  <swiper class="swiper-content" style = "height: {{ height * addressList.length}}rpx" current="{{currentTab}}" addressType="{{currentTab}}" duration="200" bindchange="swiperChange">
+    <swiper-item wx:for="{{tabItem}}" wx:key="index" data-current="{{index}}">
+      <item-list bindGetHeight="getContentHeight" list="{{ addressList || [] }}" />
+    </swiper-item>
+  </swiper>
+</view>

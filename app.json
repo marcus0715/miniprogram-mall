@@ -4,7 +4,8 @@
     "pages/order/index",
     "pages/category/index",
     "pages/userCenter/index",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/addressBook/addressBook"
   ],
   "window": {
     "backgroundTextStyle": "light",

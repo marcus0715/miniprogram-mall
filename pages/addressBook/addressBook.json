@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "item-list": "/components/addressBook/contentList/index"
+  },
+  "navigationBarTitleText": ""
+}

@@ -1,0 +1,6 @@
+<!--components/addressBook/index.wxml-->
+<view class="item" id="item-content-id" wx:for="{{ list }}" wx:key="index" data-current="{{ index }}">
+  <view class="info">{{item.info.name || '123123'}}</view>
+  <view class="info">{{item.info.address}}</view>
+  <view class="info">邮编：{{item.info.postcode}}</view>
+</view>
