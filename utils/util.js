@@ -20,6 +20,14 @@ const formatTime = (date) => {
     .join(':')}`;
 };
 
+const rpxToPx = (px) => {
+  let deviceWidth = wx.getSystemInfoSync().windowWidth;
+  let rpx = (750 / deviceWidth) * Number(px);
+
+  return Math.floor(rpx);
+}
+
 module.exports = {
   formatTime,
+  rpxToPx
 };
