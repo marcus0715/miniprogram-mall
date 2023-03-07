@@ -1,4 +1,5 @@
 // components/sortColumns/index.ts
+
 Component({
   /**
    * 组件的属性列表
@@ -19,7 +20,7 @@ Component({
         }
       ]
     },
-    displayMode: '', // mode: 'list' | 'grid'
+    displayMode: 'list', // mode: 'list' | 'grid'
   },
 
   /**

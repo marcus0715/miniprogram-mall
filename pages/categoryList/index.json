@@ -1,0 +1,10 @@
+{
+  "disableScroll": true,
+  "usingComponents": {
+    "sortRows":"/components/sortRows/index",
+    "category-list": "/components/categoryList/index",
+    "scroll": "/components/scroll/index",
+    "searchBar": "/components/searchBar/index"
+  },
+  "navigationStyle": "custom"
+}
