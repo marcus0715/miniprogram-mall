@@ -1,2 +1,40 @@
 <!--pages/order/index.wxml-->
-<text>pages/order/index.wxml hello</text>
+
+<page-meta page-font-size="system" scroll-duration="1000" bindscroll="pageScroll">
+  <navigation-bar title="订单记录" />
+</page-meta>
+
+<!-- <van-tabs  title-active-color="{{#657b97}}"> -->
+<van-tabs v-model:active="active" class="" sticky ellipsis="{{false}}" 
+  line-height="{{2}}" bind:click="orderNoClick" color="#657b97">
+  <van-tab wx:for="{{ orderStates }}" wx:key="index" title="{{item.title}}" title-style="{{tab-custom}}">
+
+  </van-tab>
+</van-tabs>
+
+<view class="icon-warning">
+  <icon class="icon-icon" type="warn" size="18" color="#8b8b8b"></icon>
+  <text class="icon-mes">最近下达的订单将于24小时内显示在订单历史记录中。</text>
+</view>
+
+<view wx:for="{{ orderList }}" wx:for-item="order" wx:key="index" class="order-block">
+  <view class="order-title" bindtap="orderNoClick">
+    <text class="text-name">订单号：</text>
+    <text class="text-value">{{order.orderNo}}</text>
+    <van-icon name="arrow" class="more-icon" />
+    <text class="text-right">{{order.state}}</text>
+  </view>
+  <view class="order-title">
+    <text class="text-name">PO编号：</text>
+    <text class="text-value">{{order.poNo}}</text>
+    <text class="text-right">{{order.price}}</text>
+  </view>
+  <view class="order-title">
+    <text class="text-name">订购日期：</text>
+    <text class="text-value">{{order.date}}</text>
+  </view>
+  <view class="order-title">
+    <text class="text-name">送达方：</text>
+    <text class="text-value">{{order.service}}</text>
+  </view>
+</view>

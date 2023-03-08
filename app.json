@@ -5,7 +5,9 @@
     "pages/category/index",
     "pages/userCenter/index",
     "pages/orderDetail/orderDetail",
-    "pages/addressBook/addressBook"
+    "pages/addressBook/addressBook",
+    "pages/shoppingCart/shoppingCart",
+    "pages/categoryList/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,6 +37,12 @@
         "iconPath": "/images/order-unselect@2x.png",
         "selectedIconPath": "/images/order-select@2x.png",
         "text": "订单"
+      },
+      {
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "iconPath": "/images/shopping-cart-unselected.png",
+        "selectedIconPath": "images/shopping-cart-selected.png",
+        "text": "购物车"
       },
       {
         "pagePath": "pages/userCenter/index",
