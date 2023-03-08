@@ -5,7 +5,7 @@
     "pages/category/index",
     "pages/userCenter/index",
     "pages/orderDetail/orderDetail",
-    "pages/addressBook/addressBook"
+    "pages/addressBook/addressBook",
     "pages/shoppingCart/shoppingCart",
     "pages/categoryList/index"
   ],
