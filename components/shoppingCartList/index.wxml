@@ -1,0 +1,20 @@
+<!--components/shoppingCartList/index.js.wxml-->
+
+<block wx:if="{{list.length > 0}}">
+  <view wx:for="{{ list }}" wx:key="id" wx:for-item="item" class="shopping_item__container">
+    <van-swipe-cell id="swipe-cell" right-width="{{ 70 }}" async-close bind:close="_onClose" data-id="{{item.id}}">
+      <radio class="radio-button" checked="{{item.isSelected}}" color="red" data-item="{{item}}" bindtap="_onClickRadio"></radio>
+      <view class="card-container">
+        <van-card price="{{item.price}}" origin-price="{{item.orginPrice}}" tag="{{item.tag}}" desc="{{item.desc}}" title="{{item.name}}" lazy-load thumb="{{item.thumb}}">
+          <view slot="num" class="shopping_num">
+            <van-stepper value="{{item.number}}" step="1" disable-input bind:change="_onNumberChnage" data-id="{{item.id}}"/>
+          </view>
+        </van-card>
+      </view>
+      <view slot="right" class="right-button__container">
+        <van-button type="danger">删除</van-button>
+      </view>
+    </van-swipe-cell>
+  </view>
+</block>
+<van-empty wx:else description="购物车空空如也～" />
