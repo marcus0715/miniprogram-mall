@@ -1,0 +1,4 @@
+<!--components/header-search.wxml-->
+<view class="header-search-wrapper">
+  <van-search custom-class="header-search" field-class="header-search-field" value="{{ value }}" shape="round" placeholder="请输入搜索关键词" bind:change="onChange" bind:search="onSearch" />
+</view>
