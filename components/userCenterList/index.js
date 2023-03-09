@@ -13,15 +13,28 @@ Component({
   },
   methods: {
     onTap: (event) => {
-      const id = event.currentTarget.dataset.id;
-      console.log('onTap: ' + id);
-      switch(id) {
+      const { item } = event.target.dataset;
+      console.log('onTap: ', item);
+      if (!item || !item.id) {
+        return;
+      }
+      switch(item.id) {
         case 1:
-          wx.navigateTo({
-            url: `/pages/addressBook/addressBook?userId=${id}`
+          wx.showToast({
+            title: '通讯簿, 在开发中...',
+            icon: 'none',
+            duration: 2000
           });
+          // wx.navigateTo({
+          //   url: `/pages/addressBook/addressBook?userId=${id}`
+          // });
           break;
         case 2:
+          wx.showToast({
+            title: '客户仪表盘, 正在开发中...',
+            icon: 'none',
+            duration: 2000
+          });
           break;
         default:
           return;

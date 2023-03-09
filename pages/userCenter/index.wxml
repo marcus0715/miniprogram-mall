@@ -9,14 +9,14 @@
   </div>
   <div class="basicInfo">
     <div>
-      <van-icon name="phone-o" style="font-size: 40rpx;margin-right: 5px;" />
-      <span style="font-size: 30rpx;">电话</span>
+      <van-icon name="phone-o" class="phone"/>
+      <span style="font-size: 25rpx;">电话</span>
     </div>
     <div style="display: flex;">
-      <van-icon name="label-o"  style="font-size: 40rpx;margin-right: 5px;"/>
-      <div style="display: flex;flex-direction: column;">
-        <span style="font-size: 30rpx;">客户类型</span>
-        <span style="font-size: 30rpx;">Distributor</span>
+      <van-icon name="label-o" class="type"/>
+      <div style="display: flex;flex-direction: column;font-size: 25rpx;">
+        <span>客户类型</span>
+        <span>Distributor</span>
       </div>
     </div>
   </div>
