@@ -5,8 +5,22 @@ Component({
    */
   properties: {
     productInfo: {
-      type: {},
-      value: {}
+      type: Object,
+      value: {},
+      observer: function(newVal, oldVal) {
+        let price, dollar, point;
+        if (Object.keys(newVal).length > 0) {
+          price = newVal.productPrice;
+          price = price.split('.');
+          dollar = price[0];
+          point = price[1];
+          newVal.dollar = dollar;
+          newVal.point = point;
+          this.setData({
+            productInfo: newVal
+          });
+        };
+      }
     }
   },
 

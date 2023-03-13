@@ -13,7 +13,7 @@
     <text class="footer-action-txt">购物车</text>
   </view>
   <view class="footer-action">
-    <button class="shopping-btn add-cart">加入购物车</button>
+    <button class="shopping-btn add-cart" bindtap="_addToCart">加入购物车</button>
     <button class="shopping-btn buy-now">立即购买</button>
   </view>
 </view>

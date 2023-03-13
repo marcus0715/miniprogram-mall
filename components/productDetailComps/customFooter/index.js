@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    _addToCart: function (e) {
+      
+    }
   }
 })

@@ -1,6 +1,6 @@
 <!--components/productDetailComps/priceBar/index.wxml-->
 <view class="price-bar">
-  <text class="price-txt">￥{{productInfo.productPrice}}</text>
+  <text class="price-txt">￥<text class="dollar-txt">{{productInfo.dollar}}</text>.{{productInfo.point}}</text>
   <view class="icon-right action-icon">
     <van-icon name="share-o" />
     <text class="action-txt">分享</text>

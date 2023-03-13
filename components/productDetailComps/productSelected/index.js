@@ -21,6 +21,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    _productCount: function (e) {
+      const a = e;
+    }
   }
 })

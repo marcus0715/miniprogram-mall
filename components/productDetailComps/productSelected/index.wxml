@@ -7,7 +7,7 @@
   </view>
   <view class="product-item">
     <text class="label-txt">数量</text>
-    <van-stepper v-model="value" step="1" integer="true" class="step-num"/>
+    <van-stepper bind:change="_productCount" v-model="value" step="1" integer class="step-num"/>
   </view>
   <view class="product-item">
     <text class="label-txt">配送</text>
@@ -16,6 +16,11 @@
       <text class="proper-txt">杭州市 至 江苏省南京市玄武区</text>
     </view>
     <van-icon name="arrow" class="icon-right"/>
+  </view>
+  <view class="anticipate-time">
+    <text wx:if="{{productInfo.inStock}}" class="in-stock">现货</text>
+    <text wx:if="{{!productInfo.inStock}}" class="in-stock">无货</text>
+    <text wx:if="{{productInfo.inStock}}">16:00前支付，预计24小时内发货</text>
   </view>
   <view class="product-item">
     <text class="label-txt">运费</text>
