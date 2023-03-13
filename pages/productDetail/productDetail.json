@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "imageSwipe": "/components/productDetailComps/imageSwipe/index",
+    "customFooter": "/components/productDetailComps/customFooter/index",
+    "discountBar": "/components/productDetailComps/discountBar/index",
+    "priceBar": "/components/productDetailComps/priceBar/index",
+    "productSelected": "/components/productDetailComps/productSelected/index"
+  }
+}

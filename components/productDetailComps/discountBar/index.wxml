@@ -1,0 +1,11 @@
+<!--components/discountBar/index.wxml-->
+<view class="discount-info">
+  <view class="reduce-text">
+    <text>绑定上海银行(9871),领20元立减金</text>
+    <van-icon name="arrow" />
+  </view>
+  <view class="reduce-text">
+    <text>新客优惠专区，快来看看吧</text>
+    <van-icon name="arrow" />
+  </view>
+</view>

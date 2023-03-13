@@ -1,0 +1,18 @@
+<!--components/productDetailComps/priceBar/index.wxml-->
+<view class="price-bar">
+  <text class="price-txt">￥{{productInfo.productPrice}}</text>
+  <view class="icon-right action-icon">
+    <van-icon name="share-o" />
+    <text class="action-txt">分享</text>
+  </view>
+  <view class="icon-right action-icon" bindtap="_collected">
+    <view wx:if="{{productInfo.productCollect}}">
+      <van-icon name="like" color="rgb(233, 75, 128)"/>
+      <text class="action-txt">已收藏</text>
+    </view>
+    <view wx:if="{{!productInfo.productCollect}}">
+      <van-icon name="like-o" />
+      <text class="action-txt">收藏</text>
+    </view>
+  </view>
+</view>

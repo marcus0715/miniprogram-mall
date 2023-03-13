@@ -1,0 +1,24 @@
+<!--pages/productDetail/productDetail.wxml-->
+<scroll-view scroll-y="true" class="product-detail-layout">
+  <view class="img-layout">
+    <imageSwipe imageList="{{productDetail.imgSrcList}}"></imageSwipe>
+  </view>
+  <view class="content-layout">
+    <view class="comps-bg">
+      <priceBar productInfo="{{productDetail}}"></priceBar>
+    </view>
+    <view class="comps-bg">
+      <discountBar></discountBar>
+    </view>
+    <view class="comps-bg">
+      <view class="product-title">{{productDetail.productName}}</view>
+      <view wx:if="{{productDetail.promiseDelier}}" class="promise-delier">{{productDetail.promiseDelier}}</view>
+    </view>
+    <view class="comps-bg divid-line">
+      <productSelected productInfo="{{productDetail}}"></productSelected>
+    </view>
+  </view>
+</scroll-view>
+<view>
+  <customFooter></customFooter>
+</view>

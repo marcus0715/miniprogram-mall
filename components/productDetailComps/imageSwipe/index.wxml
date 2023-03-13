@@ -1,0 +1,14 @@
+<!--components/imageSwipe/index.wxml-->
+<view class="product-img swiper-layout">
+  <swiper indicator-dots="{{indicatorDots}}" bindanimationfinish="_updateItemData" 
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="product-img">
+      <swiper-item wx:for="{{imageList}}" wx:key="*this" wx:for-index="idx" data-imgindex="{{idx}}">
+        <image class="product-img" src="{{item}}"></image>
+      </swiper-item>
+  </swiper>
+  <view class="swiper-count">
+    <text class="count-txt-mol">{{currentIdx}}</text>
+    <text class="count-txt-den">/{{imageList.length}}</text>
+  </view>
+</view>
+

@@ -1,0 +1,19 @@
+<!--components/customFooter/index.wxml-->
+<view class="product-footer">
+  <view class="footer-action shop-icon">
+    <van-icon name="shop-o"/>
+    <text class="footer-action-txt">店铺</text>
+  </view>
+  <view class="footer-action">
+    <van-icon name="service-o" />
+    <text class="footer-action-txt">客服</text>
+  </view>
+  <view class="footer-action">
+    <van-icon name="shopping-cart-o" />
+    <text class="footer-action-txt">购物车</text>
+  </view>
+  <view class="footer-action">
+    <button class="shopping-btn add-cart">加入购物车</button>
+    <button class="shopping-btn buy-now">立即购买</button>
+  </view>
+</view>

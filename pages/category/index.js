@@ -74,6 +74,20 @@ Page({
     console.log('event',event)
     this.loadCategories()
   },
+  enterDetail(e) {
+    const productData = e.currentTarget.dataset.product;
+    wx.navigateTo({
+      url: '../productDetail/productDetail',
+      events: {
+        productDataForDetail: function(data) {
+          console.log(data)
+        }
+      },
+      success: (res) => {
+        res.eventChannel.emit('productDataForDetail', productData);
+      }
+    })
+  },
 
   /**
    * Lifecycle function--Called when page load

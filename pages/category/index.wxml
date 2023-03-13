@@ -30,7 +30,7 @@
       <scroll-view class="category-list" scroll-y="{{true}}" enable-flex="{{true}}" bindscrolltolower="loadMoreCategories">
 
         <van-grid column-num="3" border="{{ false }}" gutter="{{3}}">
-          <van-grid-item use-slot wx:for="{{ categories }}" wx:for-item="category" wx:key="id" custom-class="category-item">
+          <van-grid-item use-slot wx:for="{{ categories }}" wx:for-item="category" wx:key="id" custom-class="category-item" bindtap="enterDetail" data-product="{{category}}">
             <image src="{{category.imgSrc}}" lazy-load mode="aspectFill" class="category-image" />
           <text class="category-name">{{category.name}}</text>
           </van-grid-item>
