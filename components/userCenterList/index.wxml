@@ -1,4 +1,4 @@
-<view wx:for="{{array}}" wx:for-item="item" wx:key="index" class="list" data-item="{{item}}" bindtap="onTap" >
+<view wx:for="{{array}}" wx:for-item="item" wx:key="index" class="list" data-item="{{item.id}}" bindtap="onTap" >
     <van-icon name="{{item.icon}}" style="font-size: 40rpx;"/>
     <span style="font-size: 25rpx;margin-left: 10px;">
       {{item.text}}

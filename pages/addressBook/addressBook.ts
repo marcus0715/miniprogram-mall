@@ -16,7 +16,7 @@ Page({
     height: "100%"
   },
   switchNav: function (e) {
-    const {current, type} = e.target.dataset
+    const {current, type} = e.currentTarget.dataset
     var that = this;
 
     if (this.data.currentTab === current) {

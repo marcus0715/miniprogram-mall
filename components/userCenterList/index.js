@@ -13,21 +13,21 @@ Component({
   },
   methods: {
     onTap: (event) => {
-      const { item } = event.target.dataset;
+      const { item } = event.currentTarget.dataset;
       console.log('onTap: ', item);
-      if (!item || !item.id) {
+      if (!item) {
         return;
       }
-      switch(item.id) {
+      switch(item) {
         case 1:
-          wx.showToast({
-            title: '通讯簿, 在开发中...',
-            icon: 'none',
-            duration: 2000
-          });
-          // wx.navigateTo({
-          //   url: `/pages/addressBook/addressBook?userId=${id}`
+          // wx.showToast({
+          //   title: '通讯簿, 在开发中...',
+          //   icon: 'none',
+          //   duration: 2000
           // });
+          wx.navigateTo({
+            url: `/pages/addressBook/addressBook?userId=${item}`
+          });
           break;
         case 2:
           wx.showToast({
