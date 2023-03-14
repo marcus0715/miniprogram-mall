@@ -10,6 +10,10 @@ App({
         _this.globalData.SystemInfo = res;
       },
     });
+    wx.cloud.init({
+      env: "mall-2gkjgi8hceaa6fc5",
+      traceUser: true
+    })
     safeValue()
   },
   globalData: {
