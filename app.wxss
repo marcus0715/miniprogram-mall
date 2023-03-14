@@ -245,8 +245,6 @@ scroll-view {
 }
 
 button {
-  position: unset;
-  display: unset;
   margin-left: unset;
   margin-right: unset;
   padding-left: unset;

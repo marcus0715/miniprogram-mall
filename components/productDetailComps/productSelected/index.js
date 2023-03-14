@@ -22,7 +22,8 @@ Component({
    */
   methods: {
     _productCount: function (e) {
-      const a = e;
+      const finalCount = e.detail;
+      this.triggerEvent('countevent', finalCount)
     }
   }
 })

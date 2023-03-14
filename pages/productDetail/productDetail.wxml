@@ -15,10 +15,10 @@
       <view wx:if="{{productDetail.promiseDelier}}" class="promise-delier">{{productDetail.promiseDelier}}</view>
     </view>
     <view class="comps-bg divid-line">
-      <productSelected productInfo="{{productDetail}}"></productSelected>
+      <productSelected productInfo="{{productDetail}}" bind:countevent="onCountEvent"></productSelected>
     </view>
   </view>
 </scroll-view>
 <view>
-  <customFooter></customFooter>
+  <customFooter productInfo="{{productDetail}}"></customFooter>
 </view>

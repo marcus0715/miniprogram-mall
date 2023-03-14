@@ -9,7 +9,7 @@
     <text class="footer-action-txt">客服</text>
   </view>
   <view class="footer-action">
-    <van-icon name="shopping-cart-o" />
+    <van-icon name="shopping-cart-o" info="{{cartCount}}"/>
     <text class="footer-action-txt">购物车</text>
   </view>
   <view class="footer-action">

@@ -9,6 +9,13 @@ Page({
     productDetail: {}
   },
 
+  onCountEvent(e) {
+    this.data.productDetail.productCount = e.detail;
+    this.setData({
+      productDetail: this.data.productDetail
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
