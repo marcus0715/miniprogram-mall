@@ -7,7 +7,8 @@
     "pages/orderDetail/orderDetail",
     "pages/addressBook/addressBook",
     "pages/shoppingCart/shoppingCart",
-    "pages/categoryList/index"
+    "pages/categoryList/index",
+    "pages/productDetail/productDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
