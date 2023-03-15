@@ -19,17 +19,10 @@ Page({
    * Lifecycle function--Called when page load
    */
   async onLoad() {
-    // const list = await getProductList()
-    // this.setData({
-    //   productList: list
-    // })
-    wx.cloud.callFunction({
-      name: 'getCatalog',
-    }).then(res => {
-      const catalog = res.result.map(item => {return {...item, url: getImageUrl(300, 300)}})
-      this.setData({
-        productList: catalog
-      })
+    const res = await getProductList()
+    const catalog = res.result.map(item => {return {...item, url: getImageUrl(300, 300)}})
+    this.setData({
+      productList: catalog
     })
   },
 

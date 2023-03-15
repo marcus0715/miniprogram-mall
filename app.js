@@ -1,6 +1,7 @@
 // app.js
 import { apiLogin } from './api/user';
 import { safeValue } from './utils/wxSys'
+import { request } from './utils/request'
 App({
   onLaunch() {
     const _this = this;
@@ -14,6 +15,7 @@ App({
       env: "mall-2gkjgi8hceaa6fc5",
       traceUser: true
     })
+    wx.cloud.callFunction = request
     safeValue()
   },
   globalData: {
