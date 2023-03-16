@@ -2,7 +2,7 @@ name: 预览小程序
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   preview:
     runs-on: ubuntu-latest
