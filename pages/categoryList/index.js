@@ -1,7 +1,6 @@
 // pages/categoryList/index.ts
-import {
-  getImageUrl
-} from '../../utils/tools'
+import { getImageUrl } from '../../utils/tools'
+import { request } from '../../utils/request'
 import {getCategoryList} from '../../api/categoryList'
 // import { categoryList } from '../../mockData/categoryList';
 
@@ -171,7 +170,7 @@ Page({
         })
       },
     })
-    getCategoryList().then(resp => {
+    request({name:'getProductsList'}).then(resp => {
       mockData = resp.result ? resp.result : resp;
       mockData.forEach(element => {
         element.url = getImageUrl(300, 300);

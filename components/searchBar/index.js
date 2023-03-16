@@ -45,6 +45,9 @@ Component({
         tapText:e.detail
       });
       this.triggerEvent('changeValue', this.data.tapText)
+    },
+    _goBack: function(){
+      wx.navigateBack();
     }
   }
 })

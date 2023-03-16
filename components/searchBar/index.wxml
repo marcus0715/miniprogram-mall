@@ -1,9 +1,9 @@
 <!--components/searchBar/index.wxml-->
-
 <view class="custom-bar" style="height:{{navHeight}}px">
     <view class="custom-bar__wrapper" style="margin-top:{{searchMarginTop}}px; height: {{searchHeight}}px;width: {{searchWidth}}px" >
+      <van-icon name="arrow-left" size="22px" bind:click="_goBack"/>
       <view class="search-group">
         <van-search use-action-slot="true" background="#fafafa" shape="round" field-class="van-search" focus  value="{{ tapText }}" placeholder="请输入关键字" bind:change="changeValue"> </van-search>
+      </view>
     </view>
-    </view>
-  </view>
+</view>

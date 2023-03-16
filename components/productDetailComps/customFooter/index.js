@@ -29,6 +29,11 @@ Component({
       this.setData({
         cartCount: this.data.cartCount + this.data.addCartCount
       });
+    },
+    _enterCart: function (e) {
+      wx.reLaunch({
+        url: './../shoppingCart/shoppingCart',
+      })
     }
   }
 })

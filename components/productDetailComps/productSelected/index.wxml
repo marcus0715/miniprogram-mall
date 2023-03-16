@@ -2,7 +2,7 @@
 <view>
   <view class="product-item">
     <text class="label-txt">规格</text>
-    <text class="proper-txt">【口味1】苹果</text>
+    <text class="proper-txt">{{productInfo.size[1]}}</text>
     <van-icon name="arrow" class="icon-right"/>
   </view>
   <view class="product-item">
@@ -24,6 +24,6 @@
   </view>
   <view class="product-item">
     <text class="label-txt">运费</text>
-    <text class="proper-txt">{{productInfo.emailPolicy}}</text>
+    <text class="proper-txt">{{productInfo.expressPolicy}}</text>
   </view>
 </view>

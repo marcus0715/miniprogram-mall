@@ -1,5 +1,7 @@
 // pages/productDetail/productDetail.ts
 import {getProductInfo} from '../../api/productDetail';
+import { getImageUrl } from '../../utils/tools';
+import { request } from '../../utils/request';
 Page({
 
   /**
@@ -22,7 +24,13 @@ Page({
   onLoad() {
     const evenChannel = this.getOpenerEventChannel();
     evenChannel.on('productDataForDetail', (data) => {
-      getProductInfo(data._id).then((resp)=>  {
+    const requestData = {
+      _id: data._id
+    };
+    request({name:'getCurrentPro', data: requestData}).then((resp)=>  {
+        if (!resp.result[0].imgSrcList) {
+          resp.result[0].imgSrcList= [getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300)]
+        }
         this.setData({
           productDetail: resp.result[0]
         });
