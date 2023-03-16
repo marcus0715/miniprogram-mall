@@ -2,54 +2,13 @@
 import {
   getImageUrl
 } from '../../utils/tools'
-// import {getCategoryList} from '../../api/categoryList'
+import {getCategoryList} from '../../api/categoryList'
 // import { categoryList } from '../../mockData/categoryList';
+
 
 let app = getApp(),
   pageStart = 0;
-let mockData = [{
-    url: getImageUrl(300, 300),
-    title: "FC400C15SPW",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "2406.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC400UV24A",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "3078.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC600A20SPW",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "3165.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC800A25SPW",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "3432.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC400C15SPW",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "2406.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC400UV24A",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "3078.00"
-  },
-  {
-    url: getImageUrl(300, 300),
-    title: "FC600A20SPW",
-    description: "电子式空气净化器FC400/600/800:用于配合新风系统净化过滤",
-    price: "3165.00"
-  }
-]
+let mockData = [];
 
 Page({
   data: {
@@ -188,8 +147,6 @@ Page({
     this.getList('more', this.data.page);
   },
   onLoad() {
-    this.getList('refresh', pageStart);
-
     this.setData({
       menuButtonInfo: wx.getMenuButtonBoundingClientRect()
     })
@@ -213,6 +170,13 @@ Page({
           searchWidth: right - width // 胶囊按钮右边坐标 - 胶囊按钮宽度 = 按钮左边可使用宽度
         })
       },
+    })
+    getCategoryList().then(resp => {
+      mockData = resp.result ? resp.result : resp;
+      mockData.forEach(element => {
+        element.url = getImageUrl(300, 300);
+      });
+      this.getList('refresh', pageStart);
     })
   },
   onSort(option) {

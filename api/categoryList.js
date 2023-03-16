@@ -1,8 +1,16 @@
 import {categoryList} from '../mockData/categoryList'
 export const getCategoryList = () => {
-  return new Promise(resolve=>{
-    setTimeout(()=>{
-      resolve(categoryList)
-    },200)
-  })
+  let callProduct;
+  if (getApp().globalData.isMocked) {
+    callProduct = new Promise(resolve=>{
+      setTimeout(()=>{
+        resolve(categoryList)
+      },200)
+    })
+  } else {
+    callProduct = wx.cloud.callFunction({
+      name: 'getProductsList'
+    })
+  }
+  return callProduct;
 }

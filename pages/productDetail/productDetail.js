@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    productDetail: {}
+    productDetail: {},
+    addCartCount: 1
   },
 
   onCountEvent(e) {
-    this.data.productDetail.productCount = e.detail;
     this.setData({
-      productDetail: this.data.productDetail
+      addCartCount: e.detail
     });
   },
 
@@ -22,9 +22,9 @@ Page({
   onLoad() {
     const evenChannel = this.getOpenerEventChannel();
     evenChannel.on('productDataForDetail', (data) => {
-      getProductInfo(data.id).then((resp)=>  {
+      getProductInfo(data._id).then((resp)=>  {
         this.setData({
-          productDetail: resp
+          productDetail: resp.result[0]
         });
       });
     });

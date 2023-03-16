@@ -9,7 +9,8 @@
     <text class="footer-action-txt">客服</text>
   </view>
   <view class="footer-action">
-    <van-icon name="shopping-cart-o" info="{{cartCount}}"/>
+    <van-icon wx:if="{{cartCount > 0}}" name="shopping-cart-o" info="{{cartCount}}"/>
+    <van-icon wx:else name="shopping-cart-o"/>
     <text class="footer-action-txt">购物车</text>
   </view>
   <view class="footer-action">

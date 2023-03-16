@@ -21,6 +21,7 @@ App({
   globalData: {
     userInfo: null,
     SystemInfo: '',
+    isMocked: false
   },
   onShow() {
     this.update();

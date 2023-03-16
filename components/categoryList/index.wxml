@@ -1,13 +1,13 @@
 <!--components/categoryList/index.wxml-->
 
 <view class="category-list__container">
-  <van-grid wx:if="{{displayMode === 'list'}}" column-num="1" gutter="{{ -15 }}" border="{{false}}">
-    <van-grid-item class="category-item" use-slot wx:for="{{ categoryList }}" wx:key="index" wx:for-item="category" bindtap="itemClick">
+  <van-grid clickable wx:if="{{displayMode === 'list'}}" column-num="1" gutter="{{ -15 }}" border="{{false}}">
+    <van-grid-item class="category-item" use-slot wx:for="{{ categoryList }}" wx:key="index" wx:for-item="category"           bind:click="_enterDetail" data-product="{{category}}">
       <view class="category-item-left">
         <image class="category-item__image" lazy-load mode="aspectFill" src="{{category.url}}" />
       </view>
       <view class="category-item-right">
-        <view class="category-name">{{category.title}}</view>
+        <view class="category-name">{{category.productName}}</view>
         <view class="category-description">{{category.description}}</view>
         <view class="category-price">￥{{category.price}}</view>
       </view>
@@ -19,7 +19,7 @@
         <image class="category-item__image" lazy-load mode="aspectFill" src="{{category.url}}" />
       </view>
       <view class="category-item-right">
-        <view class="category-name">{{category.title}}</view>
+        <view class="category-name">{{category.productName}}</view>
         <view class="category-description">{{category.description}}</view>
         <view class="category-price">￥{{category.price}}</view>
       </view>

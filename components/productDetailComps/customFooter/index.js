@@ -7,6 +7,10 @@ Component({
     productInfo: {
       type: {},
       value: {}
+    },
+    addCartCount: {
+      type: Number,
+      value: 0
     }
   },
 
@@ -22,9 +26,8 @@ Component({
    */
   methods: {
     _addToCart: function (e) {
-      // this.data.cartCount = this.data.cartCount + this.data.productInfo.productCount;
       this.setData({
-        cartCount: this.data.cartCount + this.data.productInfo.productCount
+        cartCount: this.data.cartCount + this.data.addCartCount
       });
     }
   }

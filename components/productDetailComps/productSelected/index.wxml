@@ -9,11 +9,11 @@
     <text class="label-txt">数量</text>
     <van-stepper bind:change="_productCount" v-model="value" step="1" integer class="step-num"/>
   </view>
-  <view class="product-item">
-    <text class="label-txt">配送</text>
+  <view class="product-item" bindtap="_showAddrList">
+    <text class="label-txt">送至</text>
     <view class="locate-item">
       <van-icon name="location-o" color="#d10202"/>
-      <text class="proper-txt">杭州市 至 江苏省南京市玄武区</text>
+      <text class="proper-txt">江苏省南京市玄武区</text>
     </view>
     <van-icon name="arrow" class="icon-right"/>
   </view>

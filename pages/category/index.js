@@ -74,18 +74,9 @@ Page({
     console.log('event',event)
     this.loadCategories()
   },
-  enterDetail(e) {
-    const productData = e.currentTarget.dataset.product;
+  enterProducts() {
     wx.navigateTo({
-      url: '../productDetail/productDetail',
-      events: {
-        productDataForDetail: function(data) {
-          console.log(data)
-        }
-      },
-      success: (res) => {
-        res.eventChannel.emit('productDataForDetail', productData);
-      }
+      url: '../categoryList/index'
     })
   },
 
