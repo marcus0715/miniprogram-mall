@@ -1,5 +1,4 @@
 // app.js
-import { apiLogin } from './api/user';
 import { safeValue } from './utils/wxSys'
 import { request } from './utils/request'
 App({
