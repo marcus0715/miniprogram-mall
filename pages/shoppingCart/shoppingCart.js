@@ -1,5 +1,6 @@
 // pages/shoppingCart/shoppingCart.ts
-import {getShoppingCartList, deleteShoppingCartItem, addShoppingNumber} from '../../api/shoppingCartList'
+import {getImageUrl} from '../../utils/tools';
+import {getShoppingCartList, changeShoppingNumber, removeShoppingCartItem} from '../../api/shoppingCartList'
 Page({
 
   /**
@@ -14,17 +15,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad() {
-    const list = await getShoppingCartList()
-    const newList = list.map(item=> {return {...item, isSelected: true}})
-    let totalPrcie = this.calcTotlaPrice(newList)
-    this.setData({
-      list: newList,
-      totalPrcie
-    })
+    this.getShoppingCartList();
   },
   async deleteItem(event){
-    const result = await deleteShoppingCartItem(event.detail)
+    const { id } = event.detail;
+    const result = await removeShoppingCartItem(id);
     if(result){
+      this.getShoppingCartList();
       const newList = this.data.list.filter(item => item.id !== event.detail)
       this.setData({
         list:newList,
@@ -32,10 +29,12 @@ Page({
       })
     }
   },
-  async addShoppingNumber(event){
+  async changeShoppingNumber(event){
     const {id, number} = event.detail
-    const result = await addShoppingNumber(id, number)
+    const result = await changeShoppingNumber(id, number);
+
     if(result){
+      this.getShoppingCartList();
       const newList = this.data.list.map(item=> {return item.id === id ? {...item, number} : item})
       this.setData({
         list: newList,
@@ -44,8 +43,8 @@ Page({
     }
   },
   changeShoppingSelect(event){
-    const {id} = event.detail
-    const newList = this.data.list.map(item=> {return item.id === id ? {...item, isSelected: !item.isSelected} : item})
+    const {_id: id} = event.detail;
+    const newList = this.data.list.map(item=> {return item._id === id ? {...item, isSelected: !item.isSelected} : item})
       this.setData({
         list: newList,
         totalPrcie: this.calcTotlaPrice(newList)
@@ -56,16 +55,30 @@ Page({
       title: '提交订单, 待开发...',
       icon: 'none',
       duration: 2000
-    })    
+    })
   },
   calcTotlaPrice(list){
-    let totalPrcie = 0
+    let totalPrcie = 0;
     for(let i = 0; i< list.length; i++){
       if(list[i].isSelected){
-        totalPrcie +=list[i].price * list[i].number 
+        totalPrcie +=list[i].price * list[i].number;
       }
     }
     return totalPrcie * 100
+  },
+
+  async getShoppingCartList() {
+    const list = await getShoppingCartList();
+    const hasList = list && list.result;
+
+    if (hasList) {
+      const newList = list && list.result.map(item=> {return {...item, isSelected: true, thumbnailUrl: getImageUrl(300, 300)}});
+      let totalPrcie = this.calcTotlaPrice(newList)
+      this.setData({
+        list: newList,
+        totalPrcie
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
