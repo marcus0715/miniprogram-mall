@@ -15,4 +15,8 @@
       <text class="action-txt">收藏</text>
     </view>
   </view>
+  <view class="icon-right action-icon" bindtap="_generateQR">
+    <van-icon name="qr" />
+    <text class="action-txt">QR</text>
+  </view>
 </view>

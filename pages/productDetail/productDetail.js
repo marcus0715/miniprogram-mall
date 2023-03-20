@@ -2,6 +2,7 @@
 import {getProductInfo} from '../../api/productDetail';
 import { getImageUrl } from '../../utils/tools';
 import { request } from '../../utils/request';
+import QR from 'qrcode-base64'
 Page({
 
   /**
@@ -9,13 +10,29 @@ Page({
    */
   data: {
     productDetail: {},
-    addCartCount: 1
+    addCartCount: 1,
+    qrBase64: '',
   },
 
   onCountEvent(e) {
     this.setData({
       addCartCount: e.detail
     });
+  },
+  onGenerateQR(){
+    const imgData = QR.drawImg(this.data.productDetail._id, {
+        typeNumber: 4,
+        errorCorrectLevel: 'M',
+        size: 300
+      })
+      this.setData({
+        qrBase64: imgData
+      })
+  },
+  onCloseQRModal(){
+    this.setData({
+      qrBase64: ''
+    })
   },
 
   /**

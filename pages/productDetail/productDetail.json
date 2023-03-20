@@ -4,6 +4,7 @@
     "customFooter": "/components/productDetailComps/customFooter/index",
     "discountBar": "/components/productDetailComps/discountBar/index",
     "priceBar": "/components/productDetailComps/priceBar/index",
-    "productSelected": "/components/productDetailComps/productSelected/index"
+    "productSelected": "/components/productDetailComps/productSelected/index",
+    "imageModal": "/components/imageModal/index"
   }
 }

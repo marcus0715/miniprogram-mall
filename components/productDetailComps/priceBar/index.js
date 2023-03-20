@@ -40,6 +40,9 @@ Component({
       this.setData({
         productInfo: this.data.productInfo
       });
+    },
+    _generateQR(){
+      this.triggerEvent('generateQR')
     }
   }
 })
