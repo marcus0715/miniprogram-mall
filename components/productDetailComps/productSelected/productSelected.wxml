@@ -1,13 +1,13 @@
 <!--components/productDetailComps/productSelected/index.wxml-->
 <view>
-  <view class="product-item">
+  <view class="product-item" bindtap="_showSizeList">
     <text class="label-txt">规格</text>
-    <text class="proper-txt">{{productInfo.size[1]}}</text>
+    <text class="proper-txt">{{selectCatagory}}</text>
     <van-icon name="arrow" class="icon-right"/>
   </view>
   <view class="product-item">
     <text class="label-txt">数量</text>
-    <van-stepper bind:change="_productCount" v-model="value" step="1" integer class="step-num"/>
+    <van-stepper bind:change="_productCount" value="{{selectCount}}" step="1" integer class="step-num"/>
   </view>
   <view class="product-item" bindtap="_showAddrList">
     <text class="label-txt">送至</text>

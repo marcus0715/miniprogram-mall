@@ -1,0 +1,4 @@
+<!--components/priceFormat/priceFormat.wxml-->
+<view class="price-desc">
+  <text class="price-txt">￥<text class="dollar-txt">{{priceDollar}}</text>.{{pricePoint}}</text>
+</view>

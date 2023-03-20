@@ -172,7 +172,7 @@ Page({
     request({name:'getProductsList'}).then(resp => {
       mockData = resp.result ? resp.result : resp;
       mockData.forEach(element => {
-        element.url = getImageUrl(300, 300);
+        element.url = element.imgSrcList ? element.imgSrcList[0] : getImageUrl(300, 300);
       });
       this.getList('refresh', pageStart);
     })
