@@ -16,7 +16,7 @@
     </view>
     <view class="comps-bg divid-line">
       <productSelected productInfo="{{productDetail}}" model:select-count="{{selectCount}}" 
-      model:show-addrs="{{showAddrs}}" model:show-size="{{showSize}}" selectCatagory="{{selectCatagory}}"></productSelected>
+      model:show-addrs="{{showAddrs}}" model:show-size="{{showSize}}" selectcategory="{{selectcategory}}"></productSelected>
     </view>
   </view>
 </scroll-view>

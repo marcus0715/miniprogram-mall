@@ -31,7 +31,7 @@ Page({
     const cartPro = e.detail;
     this.setData({
       addCartCount: cartPro.number,
-      selectCatagory: cartPro.catagory
+      selectcategory: cartPro.category
     });
   },
   onGenerateQR(){

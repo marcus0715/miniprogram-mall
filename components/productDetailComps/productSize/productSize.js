@@ -11,7 +11,7 @@ Component({
         if (newVal.length > 0) {
           const selectedItem = this.data.sizeList[0];
           this.data.sizeList.forEach(element => {
-            if (element.catagory == selectedItem.catagory) {
+            if (element.category == selectedItem.category) {
               element.selected = true;
               element.number = this.data.steperNum;
             }
@@ -51,7 +51,7 @@ Component({
       const selected = e.currentTarget.dataset.select;
       this.data.sizeList.forEach(element => {
         element.selected = false;
-        if (element.catagory == selected.catagory) {
+        if (element.category == selected.category) {
           element.selected = true;
           element.number = this.data.steperNum;
         }

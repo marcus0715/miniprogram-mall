@@ -1,5 +1,5 @@
 import {categoryList} from '../mockData/categoryList'
-export const getCategoryList = (catagoryId) => {
+export const getCategoryList = (categoryId) => {
   let callProduct;
   if (getApp().globalData.isMocked) {
     callProduct = new Promise(resolve=>{
@@ -10,7 +10,7 @@ export const getCategoryList = (catagoryId) => {
   } else {
     callProduct = wx.cloud.callFunction({
       name: 'getProductsList',
-      data: catagoryId
+      data: categoryId
     })
   }
   return callProduct;

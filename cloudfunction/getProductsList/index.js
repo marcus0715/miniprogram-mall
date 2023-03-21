@@ -6,7 +6,7 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 exports.main = async (event, context) => {
   const db = cloud.database();
   const result = await db.collection('productsList').where({
-    catagoryId: event.catagoryId
+    categoryId: event.categoryId
   }).get();
   return result.data;
 }

@@ -139,7 +139,7 @@ Page({
     this.getList('more', this.data.page);
   },
   onLoad(params) {
-    const catagoryId = params.catagoryId
+    const categoryId = params.categoryId
     this.setData({
       menuButtonInfo: wx.getMenuButtonBoundingClientRect()//获取胶囊的基本参数
     })
@@ -163,7 +163,7 @@ Page({
         })
       },
     })
-    getCategoryList({catagoryId: catagoryId}).then(resp => {
+    getCategoryList({categoryId: categoryId}).then(resp => {
       mockData = resp.result ? resp.result : resp;
       mockData.forEach(element => {
         element.url = element.imgSrcList ? element.imgSrcList[0] : getImageUrl(300, 300);

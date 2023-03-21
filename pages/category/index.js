@@ -79,10 +79,10 @@ Page({
     //this.loadCategories()
   },
   enterProducts(event) {
-    const catagoryId = event.currentTarget.dataset.product._id;
-    console.log(catagoryId);
+    const categoryId = event.currentTarget.dataset.product._id;
+    console.log(categoryId);
     wx.navigateTo({
-      url: '../categoryList/index?catagoryId=' + catagoryId
+      url: '../categoryList/index?categoryId=' + categoryId
     })
   },
 
