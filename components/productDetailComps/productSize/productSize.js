@@ -9,17 +9,7 @@ Component({
       value: [],
       observer: function (newVal, oldVal) {
         if (newVal.length > 0) {
-          let price, dollar, point;
           const selectedItem = this.data.sizeList[0];
-          price = selectedItem.price;
-          price = price.split('.');
-          dollar = price[0];
-          point = price[1];
-          selectedItem.dollar = dollar;
-          selectedItem.point = point;
-          this.setData({
-            selectItem: selectedItem
-          });
           this.data.sizeList.forEach(element => {
             if (element.catagory == selectedItem.catagory) {
               element.selected = true;
@@ -27,7 +17,8 @@ Component({
             }
           });
           this.setData({
-            sizeList: this.data.sizeList
+            sizeList: this.data.sizeList,
+            selectItem: selectedItem
           });
         }
       }

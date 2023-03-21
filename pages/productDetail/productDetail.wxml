@@ -23,8 +23,8 @@
 <view>
   <customFooter productInfo="{{productDetail}}" selectCount="{{selectCount}}"  addCartCount="{{addCartCount}}"></customFooter>
 </view>
-<van-popup show="{{showSize}}" position="bottom" custom-style="height: 60%" bind:close="onCloseSize">
+<van-popup show="{{showSize}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseSize">
   <productSize sizeList="{{productDetail.size}}" bind:addcartevent="onAddCartEvent"></productSize>
 </van-popup>
 <imageModal wx:if="{{qrBase64}}" base64="{{qrBase64}}" fileName="{{productDetail._id}}" bind:closeModal="onCloseQRModal"/>
-<van-popup show="{{showAddrs}}" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs"></van-popup>
+<van-popup show="{{showAddrs}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs"></van-popup>

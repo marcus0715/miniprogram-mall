@@ -28,15 +28,7 @@ Component({
     _enterDetail(e) {
       const productData = e.currentTarget.dataset.product;
       wx.navigateTo({
-        url: '../productDetail/productDetail',
-        events: {
-          productDataForDetail: function(data) {
-            console.log(data)
-          }
-        },
-        success: (res) => {
-          res.eventChannel.emit('productDataForDetail', productData);
-        }
+        url: '../productDetail/productDetail?id=' + productData._id
       })
     },
   }

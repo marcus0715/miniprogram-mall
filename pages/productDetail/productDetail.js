@@ -1,7 +1,6 @@
 // pages/productDetail/productDetail.ts
-import {getProductInfo} from '../../api/productDetail';
+import {getProductInfo} from '../../api/productList';
 import { getImageUrl } from '../../utils/tools';
-import { request } from '../../utils/request';
 import QR from 'qrcode-base64'
 Page({
 
@@ -54,21 +53,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-    const evenChannel = this.getOpenerEventChannel();
-    evenChannel.on('productDataForDetail', (data) => {
+  onLoad(params) {
     const requestData = {
-      _id: data._id
+      _id: params.id
     };
-    request({name:'getCurrentPro', data: requestData}).then((resp)=>  {
+    getProductInfo(requestData).then((resp)=>  {
         if (!resp.result[0].imgSrcList) {
           resp.result[0].imgSrcList= [getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300)]
         }
         this.setData({
           productDetail: resp.result[0]
         });
-      });
-    });
+      }); 
   },
 
   /**

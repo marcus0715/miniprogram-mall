@@ -2,7 +2,6 @@
 import { getImageUrl } from '../../utils/tools'
 import { request } from '../../utils/request'
 import {getCategoryList} from '../../api/categoryList'
-// import { categoryList } from '../../mockData/categoryList';
 
 
 let app = getApp(),
@@ -122,16 +121,10 @@ Page({
       if (type === 'refresh') {
         this.setData({
           listData: mockData,
-          page: currentPage + 1
-        });
-      } else {
-        this.setData({
-          listData: this.data.listData.concat(mockData),
           page: currentPage + 1,
-          end: false
+          end: true
         });
       }
-
     }, 1000);
   },
   // 刷新数据
@@ -145,7 +138,8 @@ Page({
   more() {
     this.getList('more', this.data.page);
   },
-  onLoad() {
+  onLoad(params) {
+    const catagoryId = params.catagoryId
     this.setData({
       menuButtonInfo: wx.getMenuButtonBoundingClientRect()//获取胶囊的基本参数
     })
@@ -169,7 +163,7 @@ Page({
         })
       },
     })
-    request({name:'getProductsList'}).then(resp => {
+    getCategoryList({catagoryId: catagoryId}).then(resp => {
       mockData = resp.result ? resp.result : resp;
       mockData.forEach(element => {
         element.url = element.imgSrcList ? element.imgSrcList[0] : getImageUrl(300, 300);
