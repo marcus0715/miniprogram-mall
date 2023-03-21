@@ -1,0 +1,25 @@
+<!--components/productDetailComps/productSize/productSize.wxml-->
+<view class="size-layout">
+    <view class="selected-layout">
+      <image class="show-image" src="{{selectItem.photo}}"></image>
+      <view class="select-desc">
+        <priceFormat priceInfo="{{selectItem.price}}"></priceFormat>
+        <view class="selected-size">
+          <text class="selected-label">已选 </text>
+          <text class="selected-text">{{selectItem.catagory}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="select-row">
+      <view class="size-label">规格</view>
+      <view bindtap="_selectCurrent" class="size-items {{item.selected?'_selected':''}}" wx:for="{{sizeList}}" wx:key="catagory" data-select="{{item}}">{{item.catagory}}</view>
+    </view>
+    <view class="select-num-layout">
+      <text class="label-txt">数量</text>
+      <van-stepper bind:change="_sizeCount" value="{{steperNum}}" step="1" integer class="step-num"/>
+    </view>
+</view>
+<view class="footer-action">
+  <button class="shopping-btn add-cart" bindtap="_addToCart">加入购物车</button>
+  <button class="shopping-btn buy-now">立即购买</button>
+</view>

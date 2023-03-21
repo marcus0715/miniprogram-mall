@@ -15,11 +15,15 @@
       <view wx:if="{{productDetail.promiseDelier}}" class="promise-delier">{{productDetail.promiseDelier}}</view>
     </view>
     <view class="comps-bg divid-line">
-      <productSelected productInfo="{{productDetail}}" bind:countevent="onCountEvent"></productSelected>
+      <productSelected productInfo="{{productDetail}}" model:select-count="{{selectCount}}" 
+      model:show-addrs="{{showAddrs}}" model:show-size="{{showSize}}" selectCatagory="{{selectCatagory}}"></productSelected>
     </view>
   </view>
 </scroll-view>
 <view>
-  <customFooter productInfo="{{productDetail}}"  addCartCount="{{addCartCount}}"></customFooter>
+  <customFooter productInfo="{{productDetail}}" selectCount="{{selectCount}}"  addCartCount="{{addCartCount}}"></customFooter>
 </view>
-<van-popup show="{{showAddrs}}" position="bottom" custom-style="height: 60%" bind:close="onClose">地址</van-popup>
+<van-popup show="{{showSize}}" position="bottom" custom-style="height: 60%" bind:close="onCloseSize">
+  <productSize sizeList="{{productDetail.size}}" bind:addcartevent="onAddCartEvent"></productSize>
+</van-popup>
+<van-popup show="{{showAddrs}}" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs"></van-popup>
