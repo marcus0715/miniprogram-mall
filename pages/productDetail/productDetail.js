@@ -10,13 +10,29 @@ Page({
    */
   data: {
     productDetail: {},
-    addCartCount: 1,
+    selectCount: 0,
+    addCartCount: 0,
+    showAddrs: false,
+    showSize: false,
     qrBase64: '',
   },
 
-  onCountEvent(e) {
+  onCloseAddrs: function () {
     this.setData({
-      addCartCount: e.detail
+      showAddrs: false
+    });
+  },
+  onCloseSize: function () {
+    this.setData({
+      showSize: false
+    });
+  },
+  onAddCartEvent: function (e) {
+    this.onCloseSize();
+    const cartPro = e.detail;
+    this.setData({
+      addCartCount: cartPro.number,
+      selectCatagory: cartPro.catagory
     });
   },
   onGenerateQR(){

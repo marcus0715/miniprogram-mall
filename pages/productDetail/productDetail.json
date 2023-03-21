@@ -1,10 +1,12 @@
 {
   "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
     "imageSwipe": "/components/productDetailComps/imageSwipe/index",
-    "customFooter": "/components/productDetailComps/customFooter/index",
+    "customFooter": "/components/productDetailComps/customFooter/customFooter",
     "discountBar": "/components/productDetailComps/discountBar/index",
     "priceBar": "/components/productDetailComps/priceBar/index",
-    "productSelected": "/components/productDetailComps/productSelected/index",
+    "productSelected": "/components/productDetailComps/productSelected/productSelected",
+    "productSize": "/components/productDetailComps/productSize/productSize",
     "imageModal": "/components/imageModal/index"
   }
 }
