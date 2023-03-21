@@ -10,12 +10,12 @@ Component({
       observer: function (newVal, oldVal) {
         if (Object.keys(newVal).length > 0) {
           this.setData({
-            selectCatagory: this.data.productInfo.size[0].catagory
+            selectcategory: this.data.productInfo.size[0].category
           });
         }
       }
     },
-    selectCatagory: {
+    selectcategory: {
       type: String,
       value: ''
     },
@@ -38,7 +38,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    selectCatagory: ''
+    selectcategory: ''
   },
 
   /**

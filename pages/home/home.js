@@ -31,7 +31,7 @@ Page({
       success (res) {
         console.log(res)
         wx.navigateTo({
-          url: '../productDetail/productDetail',
+          url: '../productDetail/productDetail?id=' + res.result,
         })
       },
       fail(err){

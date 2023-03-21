@@ -6,13 +6,13 @@
         <priceFormat priceInfo="{{selectItem.price}}"></priceFormat>
         <view class="selected-size">
           <text class="selected-label">已选 </text>
-          <text class="selected-text">{{selectItem.catagory}}</text>
+          <text class="selected-text">{{selectItem.category}}</text>
         </view>
       </view>
     </view>
     <view class="select-row">
       <view class="size-label">规格</view>
-      <view bindtap="_selectCurrent" class="size-items {{item.selected?'_selected':''}}" wx:for="{{sizeList}}" wx:key="catagory" data-select="{{item}}">{{item.catagory}}</view>
+      <view bindtap="_selectCurrent" class="size-items {{item.selected?'_selected':''}}" wx:for="{{sizeList}}" wx:key="category" data-select="{{item}}">{{item.category}}</view>
     </view>
     <view class="select-num-layout">
       <text class="label-txt">数量</text>
