@@ -25,7 +25,23 @@ Page({
       productList: catalog
     })
   },
-
+  scanQr(){
+    wx.scanCode({
+      scanType: ['qrCode', 'datamatrix'],
+      success (res) {
+        console.log(res)
+        wx.navigateTo({
+          url: '../productDetail/productDetail',
+        })
+      },
+      fail(err){
+        wx.showToast({
+          title: err.errMsg,
+          icon: "error"
+        })
+      }
+    })
+  },
   /**
    * Lifecycle function--Called when page is initially rendered
    */

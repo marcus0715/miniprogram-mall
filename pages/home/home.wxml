@@ -3,7 +3,8 @@
 <view>
   <view class="search-bar__container">
     <van-search value="{{searchVal}}" bind:search="search" placeholder="请输入搜索关键词进行搜索" />
-    <van-icon name="comment-o" info="{{messageCount}}" size="20px"/>
+    <!-- <van-icon name="comment-o" info="{{messageCount}}" size="20px"/> -->
+    <van-icon name="scan" size="30px" bind:click="scanQr"/>
   </view>
   <view class="main-content__container">
     <view class="mall-image__container">

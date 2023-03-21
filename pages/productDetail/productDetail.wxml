@@ -5,7 +5,7 @@
   </view>
   <view class="content-layout">
     <view class="comps-bg">
-      <priceBar productInfo="{{productDetail}}"></priceBar>
+      <priceBar productInfo="{{productDetail}}" bind:generateQR="onGenerateQR"></priceBar>
     </view>
     <view class="comps-bg">
       <discountBar></discountBar>
@@ -26,4 +26,5 @@
 <van-popup show="{{showSize}}" position="bottom" custom-style="height: 60%" bind:close="onCloseSize">
   <productSize sizeList="{{productDetail.size}}" bind:addcartevent="onAddCartEvent"></productSize>
 </van-popup>
+<imageModal wx:if="{{qrBase64}}" base64="{{qrBase64}}" fileName="{{productDetail._id}}" bind:closeModal="onCloseQRModal"/>
 <van-popup show="{{showAddrs}}" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs"></van-popup>

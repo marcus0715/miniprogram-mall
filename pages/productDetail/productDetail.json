@@ -6,6 +6,7 @@
     "discountBar": "/components/productDetailComps/discountBar/index",
     "priceBar": "/components/productDetailComps/priceBar/index",
     "productSelected": "/components/productDetailComps/productSelected/productSelected",
-    "productSize": "/components/productDetailComps/productSize/productSize"
+    "productSize": "/components/productDetailComps/productSize/productSize",
+    "imageModal": "/components/imageModal/index"
   }
 }
