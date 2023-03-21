@@ -14,7 +14,7 @@
     </van-grid-item>
   </van-grid>
   <van-grid wx:else column-num="2" gutter="{{ -15 }}" border="{{false}}">
-    <van-grid-item class="category-item-grid" use-slot wx:for="{{ categoryList }}" wx:key="index" wx:for-item="category" bindtap="itemClick">
+    <van-grid-item class="category-item-grid" use-slot wx:for="{{ categoryList }}" wx:key="index" wx:for-item="category"   bind:click="_enterDetail" data-product="{{category}}">
       <view class="category-item-left">
         <image class="category-item__image" lazy-load mode="aspectFill" src="{{category.url}}" />
       </view>

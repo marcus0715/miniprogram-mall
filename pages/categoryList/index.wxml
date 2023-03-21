@@ -2,7 +2,7 @@
 
 <searchBar navHeight="{{navHeight}}"  searchMarginTop="{{searchMarginTop}}" searchHeight="{{searchHeight}}" searchWidth="{{searchWidth}}" inpMarginView="20" bind:changeValue="changeValue" />
 
-<sortRows class="title" sortItems="{{sortData}}" displayMode="{{displayMode}}" bind:onSort="onSort" bind:onModeChange="onModeChange"/>
+<sortRows style="top:{{navHeight * 2}}rpx" class="title" sortItems="{{sortData}}" displayMode="{{displayMode}}" bind:onSort="onSort" bind:onModeChange="onModeChange"/>
 <view class="hrLine"></view>
 <scroll id="scroll" requesting="{{requesting}}" empty-show="{{emptyShow}}" end="{{end}}" listCount="{{listData.length}}" enable-back-to-top="{{enableBackToTop}}" refresh-size="{{refreshSize}}" top-size="{{topSize}}" bottom-size="{{bottomSize}}" color="{{color}}" bind:refresh="refresh" bind:more="more">
 
