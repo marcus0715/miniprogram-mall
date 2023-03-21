@@ -1,11 +1,19 @@
 <!--pages/userCenter/index.wxml-->
 <view style="margin-top: {{navigationHeight}}px;">
   <div class="avatarInfo">
-    <view class="avatarIcon"><van-icon name="contact" size="50px" color="white"/></view>
-    <div class="userName">
-      <div>{{userName}}</div>
-      <div>{{userEmail}}</div>
-    </div>
+    <block>
+      <view wx:if="{{!hasUserInfo}}" class="avatarIcon">
+        <van-icon name="contact" size="50px" color="white"/>
+      </view>
+      <image wx:else bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </block>
+    <block>
+      <div wx:if="{{hasUserInfo}}" class="userName">
+          <div>{{userInfo.nickName}}</div>
+          <div>{{userInfo.email}}</div>
+      </div>
+      <div wx:else class="userName">未登录</div>
+    </block>
   </div>
   <div class="basicInfo">
     <div>
@@ -30,6 +38,12 @@
   <view>
     <userCenterList></userCenterList>
   </view>
-  <view class="exit">退出登录</view>
+    <view wx:if="{{!hasUserInfo}}" class="exit" bindtap="getUserProfile">
+      <view wx:if="{{canIUseGetUserProfile}}">登录</view>
+      <view wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</view>
+    </view>
+    <view wx:else bindtap="onExit" class="exit">
+      退出登录
+    </view>
 </view>
 
