@@ -1,11 +1,12 @@
-import { request } from '../utils/request';
-
 export function apiLogin(data) {
-  const app = getApp();
-  return request({
-    isNeedToken: false,
-    url: `***`,
-    method: 'post',
-    data,
-  });
+  signIn = wx.cloud.callFunction({
+    name: 'signIn',
+    data: {
+      code: data.code
+    },
+    complete: res => {
+      console.log('callFunction signIn result: ', res)
+    }
+  })
+  return signIn;
 }
