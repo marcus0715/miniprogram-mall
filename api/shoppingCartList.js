@@ -10,7 +10,7 @@ import {shoppingCartList, replaceShoppingCartList} from '../mockData/index'
 export const getShoppingCartList = () => {
   return wx.cloud.callFunction({
     name: 'getShoppingCartList'
-  })
+  },true)
 }
 
 export const changeShoppingNumber = (productId, number) => {
