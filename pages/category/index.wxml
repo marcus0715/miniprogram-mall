@@ -1,36 +1,34 @@
 <!--pages/category/index.wxml-->
-
-
 <view class="category">
   <header-search bind:search="onSearch" />
   <view class="category-detail-wrapper">
     <view class="category-detail-first">
-      <view wx:for="{{classification}}" wx:key="index" wx:for-item="category" class="category-tab {{activeFirstCategory.key===category.key?'active-tab':''}}" data-name="{{category.key}}" bindtap="onTabChange">
-        <text>{{category.name}}</text>
+      <view wx:for="{{classification}}" wx:key="index" wx:for-item="category" class="category-tab {{activeFirstCategory._id===category._id?'active-tab':''}}" data-name="{{category._id}}" bindtap="onTabChange">
+        <text>{{category.label}}</text>
         <view class="active-cursor"></view>
       </view>
     </view>
     <view class="category-detail-second">
-      <van-tabs swipeable ellipsis="{{false}}" tab-class="tab-custom" tab-active-class="second-tab-active" line-width="0" title-active-color="#eee" active="{{activeSecondCategory.key}}" bind:click="onSecondCategoryChange">
-        <van-tab wx:for="{{activeFirstCategory.children}}" wx:key="index" wx:for-item="secondCategory" name="{{secondCategory.key}}" title="{{secondCategory.name}}"></van-tab>
+      <van-tabs swipeable ellipsis="{{false}}" tab-class="tab-custom" tab-active-class="second-tab-active" line-width="0" title-active-color="#eee" active="{{activeSecondCategory._id}}" bind:click="onSecondCategoryChange">
+        <van-tab wx:for="{{activeFirstCategory.kinds}}" wx:key="index" wx:for-item="secondCategory" name="{{secondCategory._id}}" title="{{secondCategory.label}}"></van-tab>
       </van-tabs>
     </view>
   </view>
   <view class="category-list-wrapper">
     <scroll-view class="category-detail-third">
       <van-sidebar active-key="{{ leftMenuActiveKey }}" bindchange="onThirdCategoryChange">
-        <van-sidebar-item custom-class="category-third-item" wx:for="{{activeSecondCategory.children}}" wx:key="index" wx:for-item="thirdCategory" title="{{thirdCategory.name}}" />
+        <van-sidebar-item custom-class="category-third-item" wx:for="{{activeSecondCategory.kinds}}" wx:key="index" wx:for-item="thirdCategory" title="{{thirdCategory.label}}" />
       </van-sidebar>
     </scroll-view>
     <view class="category-detail-list">
       <view class="category-active-name">
         <view class="category-active-name-badge"></view>
-        <text>{{activeThirdCategory.name}}</text>
+        <text>{{activeThirdCategory.label}}</text>
       </view>
       <scroll-view class="category-list" scroll-y="{{true}}" enable-flex="{{true}}" bindscrolltolower="loadMoreCategories">
 
         <van-grid column-num="3" border="{{ false }}" gutter="{{3}}">
-          <van-grid-item use-slot wx:for="{{ categories }}" wx:for-item="category" wx:key="id" custom-class="category-item" bindtap="enterProducts" data-product="{{category}}">
+          <van-grid-item use-slot wx:for="{{ categories }}" wx:for-item="category" wx:key="_id" custom-class="category-item" bindtap="enterProducts" data-product="{{category}}">
             <image src="{{category.imgSrc}}" lazy-load mode="aspectFill" class="category-image" />
           <text class="category-name">{{category.name}}</text>
           </van-grid-item>

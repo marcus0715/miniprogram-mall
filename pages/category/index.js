@@ -1,5 +1,6 @@
 // pages/category/index.ts
-import {getCategories,getClassifications} from './service'
+import {getImageUrl} from '../../utils/tools'
+import {getCategoryLevel, getCategory} from '../../api/category'
 Page({
 
   /**
@@ -15,66 +16,70 @@ Page({
     classification: []
   },
   onSearch(event) {
-    console.log('searchValue', event.detail)
+    this.loadCategories(this.data.activeThirdCategory._id, event.detail)
   },
   onTabChange(event) {
-    console.log('event', event)
     const activeFirstCategoryName = event.currentTarget.dataset.name
-    const activeFirstCategory = this.data.classification.find(category => category.key === activeFirstCategoryName)
-    const activeSecondCategory = activeFirstCategory.children[0]
-    const activeThirdCategory = activeSecondCategory.children[0]
+    const activeFirstCategory = this.data.classification.find(category => category._id === activeFirstCategoryName)
+    const activeSecondCategory = activeFirstCategory.kinds[0]
+    const activeThirdCategory = activeSecondCategory.kinds[0]
     this.setData({
       activeFirstCategory,
       activeSecondCategory,
       activeThirdCategory
     })
+    this.loadCategories(activeThirdCategory ?  activeThirdCategory._id : '')
   },
   onSecondCategoryChange(event) {
-    const activeSecondCategory = this.data.activeFirstCategory.children.find(category => category.key === event.detail.name)
-    const activeThirdCategory = activeSecondCategory.children[0]
+    const activeSecondCategory = this.data.activeFirstCategory.kinds.find(category => category._id === event.detail.name)
+    const activeThirdCategory = activeSecondCategory.kinds[0]
     this.setData({
       activeSecondCategory,
       activeThirdCategory
     })
+
+    this.loadCategories(activeThirdCategory ?  activeThirdCategory._id : '')
   },
   onThirdCategoryChange(event){
-    console.log('event',event.detail)
     const leftMenuActiveKey = event.detail
-    const activeThirdCategory = this.data.activeSecondCategory.children[leftMenuActiveKey]
+    const activeThirdCategory = this.data.activeSecondCategory.kinds[leftMenuActiveKey]
     this.setData({
       leftMenuActiveKey,
       activeThirdCategory,
       categories:[]
     })
-    this.loadCategories(leftMenuActiveKey)
+    this.loadCategories(activeThirdCategory._id)
   },
 
-  loadCategories(activeThirdCategoryId){
-    getCategories({},true).then((categories)=>{
-      this.setData({
-        categories:this.data.categories.concat(categories)
-      })
+  async loadCategories(activeThirdCategoryId, searchVal=''){
+    let newCategories = []
+    if(activeThirdCategoryId){
+      const list = await getCategory({pid: activeThirdCategoryId, searchVal})
+      newCategories = list.result.map(item => {return {...item, imgSrc: getImageUrl(300, 300)}})
+    }
+    this.setData({
+      categories:newCategories
     })
   },
 
 
-  loadClassifications(){
-    getClassifications({}, true).then((classification)=>{
-      const activeThirdCategory = classification[0].children[0].children[0]
-      this.setData({
+  async loadClassifications(){
+    const classification = await (await getCategoryLevel()).result
+    const activeThirdCategory = classification[0].kinds[0].kinds [0]
+    this.setData({
         classification,
         activeFirstCategory: classification[0],
-        activeSecondCategory: classification[0].children[0],
+        activeSecondCategory: classification[0].kinds[0],
         activeThirdCategory:activeThirdCategory
       })
-      this.loadCategories(activeThirdCategory.id)
-    })
+      this.loadCategories(activeThirdCategory._id)
   },
   loadMoreCategories(event){
     console.log('event',event)
-    this.loadCategories()
+    //this.loadCategories()
   },
-  enterProducts() {
+  enterProducts(event) {
+    console.log(event.currentTarget.dataset.product._id)
     wx.navigateTo({
       url: '../categoryList/index'
     })
