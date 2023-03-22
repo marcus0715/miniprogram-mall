@@ -2,5 +2,6 @@
   "usingComponents": {
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "shopping-cart-list": "/components/shoppingCartList/index"
-  }
+  },
+  "navigationBarTitleText": "我的购物车"
 }
