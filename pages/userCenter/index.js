@@ -5,11 +5,7 @@ Page({
    * Page initial data
    */
   data: {
-    isSignIn: false,
     userID: "0001999250",
-    userName: "jordan wang",
-    userEmail: "jordan.wang@honeywell.com",
-    openid:"",
     userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
@@ -20,7 +16,7 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料',
       success: async (res) => {
-        console.log('getUserProfile######: ', res);
+        console.log('getUserProfile: ', res);
         const openInfo = await wx.cloud.callFunction({
           name: 'getOpenId'
         })
