@@ -25,7 +25,7 @@ export const request = (option, isNeedAuthorize = false, showloading = true) => 
     showFullScreenLoading()
   }
   return new Promise((resolve, reject) => {
-    if(isNeedAuthorize && !wx.getStorageSync('openId')){
+    if(isNeedAuthorize && (!wx.getStorageSync('userInfo') || !wx.getStorageSync('userInfo').openId)){
       reject({errCode: 1001, errMsg: '用户未授权'})
     }
     const {name, data} = option

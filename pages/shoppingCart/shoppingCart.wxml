@@ -4,4 +4,5 @@
   price="{{ totalPrcie }}"
   button-text="提交订单"
   bind:submit="onSubmit"
+  disabled="{{list.length === 0 ? true : false}}"
 />

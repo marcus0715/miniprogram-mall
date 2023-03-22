@@ -1,5 +1,5 @@
 <!--pages/userCenter/index.wxml-->
-<view style="margin-top: {{navigationHeight}}px;">
+<view>
   <div class="avatarInfo">
     <block>
       <view wx:if="{{!hasUserInfo}}" class="avatarIcon">
