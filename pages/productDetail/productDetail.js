@@ -1,5 +1,6 @@
 // pages/productDetail/productDetail.ts
 import {getProductInfo} from '../../api/productList';
+import {getAddressList} from '../../api/addressList';
 import { getImageUrl } from '../../utils/tools';
 import QR from 'qrcode-base64'
 Page({
@@ -9,11 +10,12 @@ Page({
    */
   data: {
     productDetail: {},
-    selectCount: 0,
+    selectCount: 1,
     addCartCount: 0,
     showAddrs: false,
     showSize: false,
     qrBase64: '',
+    addressList: []
   },
 
   onCloseAddrs: function () {
@@ -58,13 +60,18 @@ Page({
       _id: params.id
     };
     getProductInfo(requestData).then((resp)=>  {
-        if (!resp.result[0].imgSrcList) {
-          resp.result[0].imgSrcList= [getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300)]
-        }
-        this.setData({
-          productDetail: resp.result[0]
-        });
-      }); 
+      if (!resp.result[0].imgSrcList) {
+        resp.result[0].imgSrcList= [getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300)]
+      }
+      this.setData({
+        productDetail: resp.result[0]
+      });
+    });
+    getAddressList().then((resp)=> {
+      this.setData({
+        addressList: resp.result
+      });
+    });
   },
 
   /**

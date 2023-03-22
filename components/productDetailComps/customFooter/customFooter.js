@@ -23,7 +23,7 @@ Component({
     },
     selectCount: {
       type: Number,
-      value: 0,
+      value: 1,
     }
 
   },

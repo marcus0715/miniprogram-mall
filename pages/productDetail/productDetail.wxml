@@ -27,4 +27,12 @@
   <productSize sizeList="{{productDetail.size}}" bind:addcartevent="onAddCartEvent"></productSize>
 </van-popup>
 <imageModal wx:if="{{qrBase64}}" base64="{{qrBase64}}" fileName="{{productDetail._id}}" bind:closeModal="onCloseQRModal"/>
-<van-popup show="{{showAddrs}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs"></van-popup>
+<van-popup show="{{showAddrs}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs" class="page">
+    <view class="address-list">
+      <radio-group class="radio-group" bindchange="radioChange">
+            <radio class="radio-item" wx:for="{{addressList}}" wx:key="_id" value="{{item._id}}" checked="true">
+              <text>{{item.addressName}}</text>
+            </radio>
+      </radio-group>
+    </view>
+</van-popup>
