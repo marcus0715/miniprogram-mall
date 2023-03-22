@@ -6,6 +6,9 @@ Page({
    */
   data: {
     userID: "0001999250",
+    userName: "jordan wang",
+    userEmail: "jordan.wang@qq.com",
+    openid:"",
     userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,

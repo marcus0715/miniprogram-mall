@@ -8,5 +8,6 @@
     "productSelected": "/components/productDetailComps/productSelected/productSelected",
     "productSize": "/components/productDetailComps/productSize/productSize",
     "imageModal": "/components/imageModal/index"
-  }
+  },
+  "navigationBarTitleText": "商品详情"
 }
