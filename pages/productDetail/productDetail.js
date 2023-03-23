@@ -16,7 +16,8 @@ Page({
     showAddrs: false,
     showSize: false,
     qrBase64: '',
-    addressList: []
+    addressList: [],
+    shoppingCartList: []
   },
 
   onCloseAddrs: function () {
@@ -76,6 +77,7 @@ Page({
     if (wx.getStorageSync('userInfo') || wx.getStorageSync('userInfo').openId) {
       await getShoppingCartList().then( (resp)=> {
         this.setData({
+          shoppingCartList: resp.result,
           addCartCount: resp.result.length
         });
       });
