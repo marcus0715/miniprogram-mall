@@ -20,3 +20,12 @@ export const getOrderInfo = (orderId) => {
     data: orderId
   })
 }
+
+export const addToOrderList = (productInfo) => {
+  return wx.cloud.callFunction({
+    name: 'addProductsToOrderList',
+    data: {
+      productInfo
+    }
+  }, true)
+}
