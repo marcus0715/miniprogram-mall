@@ -26,7 +26,6 @@ export const addProductsToCart = (requstData) => {
 }
 
 export const removeShoppingCartItem = (productId) => {
-  console.log('*****productId****', productId);
   return wx.cloud.callFunction({
     name: 'removeProductInShoppingCart',
     data: {

@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      totalPrcie: 0,
+    totalPrice: 0,
       list:[]
   },
 
@@ -29,7 +29,7 @@ Page({
       const newList = this.data.list.filter(item => item.id !== event.detail)
       this.setData({
         list:newList,
-        totalPrcie: this.calcTotalPrice(newList)
+        totalPrice: this.calcTotalPrice(newList)
       })
     }
   },
@@ -42,7 +42,7 @@ Page({
       const newList = this.data.list.map(item=> {return item.id === id ? {...item, number} : item})
       this.setData({
         list: newList,
-        totalPrcie: this.calcTotalPrice(newList)
+        totalPrice: this.calcTotalPrice(newList)
       })
     }
   },
@@ -51,13 +51,12 @@ Page({
     const newList = this.data.list.map(item=> {return item._id === id ? {...item, isSelected: !item.isSelected} : item})
       this.setData({
         list: newList,
-        totalPrcie: this.calcTotalPrice(newList)
+        totalPrice: this.calcTotalPrice(newList)
       })
   },
   async onSubmit(){
-    const { list, totalPrcie } = this.data
+    const { list, totalPrice } = this.data
     const getPurchasedGoods = list && list.filter(item => item.isSelected);
-    console.log("*****getPurchasedGoods****", getPurchasedGoods);
 
     if (getPurchasedGoods.length  === 0) {
       wx.showToast({
@@ -100,18 +99,17 @@ Page({
         orderCompany: "成都恒昕源节能科技有限公司",
         orderCount,
         orderDate,
-        totalPrcie
+        totalPrice
       }
 
       addToOrderList(orderInfo).then((resp) => {
         wx.showToast({
-          title: '已添加至购物车！',
+          title: '购买成功！',
           icon: 'success'
-        },1500);
-        const result = removeShoppingCartItem(ordersIdArray);
-        if (result) {
+        }, 1500);
+        removeShoppingCartItem(ordersIdArray).then(res => {
           this.getShoppingCartList();
-        }
+        });
       }, (error)=>{
         if(error.errCode === -1){
           wx.showToast({
@@ -123,14 +121,14 @@ Page({
     }
   },
   calcTotalPrice(list){
-    let totalPrcie = 0;
+    let totalPrice = 0;
     for(let i = 0; i < list.length; i++){
       if(list[i].isSelected){
-        totalPrcie +=list[i].price * list[i].number;
+        totalPrice +=list[i].price * list[i].number;
       }
     }
 
-    return totalPrcie;
+    return totalPrice;
   },
 
   async getShoppingCartList() {
@@ -152,18 +150,19 @@ Page({
       }
     });
 
-    console.log("****getShoppingCartList list****", list);
-
     const hasList = list && list.result;
     if (hasList) {
       const newList = list && list.result.map(item=> {return {...item, isSelected: true}});
-      let totalPrcie = this.calcTotalPrice(newList);
-      console.log('****newList****', newList);
+      let totalPrice = this.calcTotalPrice(newList);
+
       this.setData({
         list: newList,
-        totalPrcie
+        totalPrice
       })
     }
+  },
+  onTabItemTap() {
+    this.getShoppingCartList();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -176,6 +175,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    // console.log('***进入到了购物车页面***')
   },
 
   /**
