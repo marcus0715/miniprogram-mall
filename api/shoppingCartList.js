@@ -1,7 +1,10 @@
 import {shoppingCartList, replaceShoppingCartList} from '../mockData/index'
-export const getShoppingCartList = () => {
+export const getShoppingCartList = (openId) => {
   return wx.cloud.callFunction({
-    name: 'getShoppingCartList'
+    name: 'getShoppingCartList',
+    data: {
+      openId
+    }
   }, true)
 }
 
@@ -23,6 +26,7 @@ export const addProductsToCart = (requstData) => {
 }
 
 export const removeShoppingCartItem = (productId) => {
+  console.log('*****productId****', productId);
   return wx.cloud.callFunction({
     name: 'removeProductInShoppingCart',
     data: {

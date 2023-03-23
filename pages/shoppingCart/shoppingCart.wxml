@@ -1,7 +1,8 @@
 <!--pages/shoppingCart/shoppingCart.wxml-->
-<shopping-cart-list list="{{list}}" bindonDelete="deleteItem" bindonChangeShoppingNumber="changeShoppingNumber" bindonTriggerItem="changeShoppingSelect"/>
+<shopping-cart-list class="shopping-cart-list" list="{{list}}" bindonDelete="deleteItem" bindonChangeShoppingNumber="changeShoppingNumber" bindonTriggerItem="changeShoppingSelect"/>
+<view class="occupancy"></view>
 <van-submit-bar
-  price="{{ totalPrcie }}"
+  price="{{ totalPrcie * 100 }}"
   button-text="提交订单"
   bind:submit="onSubmit"
   disabled="{{list.length === 0 ? true : false}}"

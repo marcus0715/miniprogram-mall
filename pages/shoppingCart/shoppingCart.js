@@ -1,6 +1,10 @@
 // pages/shoppingCart/shoppingCart.ts
-import {getImageUrl} from '../../utils/tools';
-import {getShoppingCartList, changeShoppingNumber, removeShoppingCartItem} from '../../api/shoppingCartList'
+import { getImageUrl } from '../../utils/tools';
+import { formatTime } from '../../utils/util.js';
+import { getShoppingCartList, changeShoppingNumber, removeShoppingCartItem } from '../../api/shoppingCartList';
+import { addToOrderList } from '../../api/orderList';
+
+
 Page({
 
   /**
@@ -25,7 +29,7 @@ Page({
       const newList = this.data.list.filter(item => item.id !== event.detail)
       this.setData({
         list:newList,
-        totalPrcie: this.calcTotlaPrice(newList)
+        totalPrcie: this.calcTotalPrice(newList)
       })
     }
   },
@@ -38,7 +42,7 @@ Page({
       const newList = this.data.list.map(item=> {return item.id === id ? {...item, number} : item})
       this.setData({
         list: newList,
-        totalPrcie: this.calcTotlaPrice(newList)
+        totalPrcie: this.calcTotalPrice(newList)
       })
     }
   },
@@ -47,33 +51,114 @@ Page({
     const newList = this.data.list.map(item=> {return item._id === id ? {...item, isSelected: !item.isSelected} : item})
       this.setData({
         list: newList,
-        totalPrcie: this.calcTotlaPrice(newList)
+        totalPrcie: this.calcTotalPrice(newList)
       })
   },
-  onSubmit(){
-    wx.showToast({
-      title: '提交订单, 待开发...',
-      icon: 'none',
-      duration: 2000
-    })
+  async onSubmit(){
+    const { list, totalPrcie } = this.data
+    const getPurchasedGoods = list && list.filter(item => item.isSelected);
+    console.log("*****getPurchasedGoods****", getPurchasedGoods);
+
+    if (getPurchasedGoods.length  === 0) {
+      wx.showToast({
+        title: '您还没有选择商品哦！',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      // console.log('***list***', list);
+      const orderDate = formatTime(new Date()).replace(/\//g, '-').split(" ")[0];
+      const orderCount = getPurchasedGoods && getPurchasedGoods.reduce((total, cur) => total + cur.number, 0);
+      const ordersIdArray = getPurchasedGoods && getPurchasedGoods.map(item => item._id);
+      let merchDetail = [];
+
+      getPurchasedGoods.map(item => {
+        const carrier = ["京东", "淘宝", "唯品会", "天猫", "拼多多"];
+        const randomGenerateCarrier = carrier[Math.floor(Math.random() * carrier.length)];
+        const obj = {
+          id: item._id,
+          carrier: randomGenerateCarrier,
+          deliverCount: 0, // 已发货的数量
+          merchCategory: "控制器",
+          merchName: item.name,
+          noDeliverCount: item.number, // 未发货的数量
+          orderCount: item.number, // 订购的数量
+          predictDate: orderDate,
+          waybillNumber: Math.floor(Math.random() * 1000000000000),
+          merchStatus: "待处理"
+        }
+        merchDetail.push(obj);
+      });
+
+      const orderInfo = {
+        openId: wx.getStorageSync('userInfo').openId,
+        orderNumber: Math.floor(Math.random() * 10000000000),
+        PONumber: `Q-${Math.floor(Math.random() * 10000)}`,
+        deliveryAddress: "中国四川成都市金牛区金府路669号20栋2层1号",
+        discount: "20%",
+        merchDetail,
+        orderCompany: "成都恒昕源节能科技有限公司",
+        orderCount,
+        orderDate,
+        totalPrcie
+      }
+
+      addToOrderList(orderInfo).then((resp) => {
+        wx.showToast({
+          title: '已添加至购物车！',
+          icon: 'success'
+        },1500);
+        const result = removeShoppingCartItem(ordersIdArray);
+        if (result) {
+          this.getShoppingCartList();
+        }
+      }, (error)=>{
+        if(error.errCode === -1){
+          wx.showToast({
+            title: '网络不稳定，请稍后再试',
+            icon: 'error'
+          },1500);
+        }
+      });
+    }
   },
-  calcTotlaPrice(list){
+  calcTotalPrice(list){
     let totalPrcie = 0;
-    for(let i = 0; i< list.length; i++){
+    for(let i = 0; i < list.length; i++){
       if(list[i].isSelected){
         totalPrcie +=list[i].price * list[i].number;
       }
     }
-    return totalPrcie * 100
+
+    return totalPrcie;
   },
 
   async getShoppingCartList() {
-    const list = await getShoppingCartList();
-    console.log(list)
+    const getOpenId = wx.getStorageSync('userInfo')?.openId;
+    const list = await getShoppingCartList(getOpenId).catch(res => {
+      if(res.errCode === 1001){
+        wx.showModal({
+          title: '请求失败',
+          content: '用户未登录，请前往登录!',
+          showCancel: false,
+          complete: (res) => {
+            if (res.confirm) { 
+              wx.switchTab({
+                url: '../userCenter/index',
+              })
+            }
+          }
+        })
+      }
+    });
+
+    console.log("****getShoppingCartList list****", list);
+
     const hasList = list && list.result;
     if (hasList) {
-      const newList = list && list.result.map(item=> {return {...item, isSelected: true, thumbnailUrl: getImageUrl(300, 300)}});
-      let totalPrcie = this.calcTotlaPrice(newList)
+      const newList = list && list.result.map(item=> {return {...item, isSelected: true}});
+      let totalPrcie = this.calcTotalPrice(newList);
+      console.log('****newList****', newList);
       this.setData({
         list: newList,
         totalPrcie
