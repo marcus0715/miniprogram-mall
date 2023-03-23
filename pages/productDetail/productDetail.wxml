@@ -21,7 +21,7 @@
   </view>
 </scroll-view>
 <view>
-  <customFooter productInfo="{{productDetail}}" selectcategory="{{selectcategory}}" selectCount="{{selectCount}}"  addCartCount="{{addCartCount}}" shoppingCartList="{{shoppingCartList}}"></customFooter>
+  <customFooter productInfo="{{productDetail}}" selectcategory="{{selectcategory}}" selectCount="{{selectCount}}"  addCartCount="{{addCartCount}}" shoppingCartList="{{shoppingCartList}}" bind:updatecartevent="onUpdateCartEvent"></customFooter>
 </view>
 <van-popup show="{{showSize}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseSize">
   <productSize sizeList="{{productDetail.size}}" bind:addcartevent="onAddCartEvent"></productSize>

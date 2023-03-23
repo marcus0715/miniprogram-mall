@@ -1,5 +1,5 @@
 // pages/orderDetail/orderDetail.ts
-import {getorderInfo} from '../../api/orderDetail'
+import {getOrderInfo} from '../../api/orderList'
 Page({
   
   /**
@@ -21,14 +21,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad() {
-      let orderDetail = await getorderInfo();
+  async onLoad(params) {
+    await getOrderInfo({orderId: params.orderId}).then((resp)=> {
+      let orderDetail = resp.result[0];
       for (let i = 0; i < orderDetail.merchDetail.length; i++) {
         orderDetail.merchDetail[i].showDetail = false;
       }
       this.setData({
         orderInfo: orderDetail
       });
+    }, (error)=> {
+      wx.showToast({
+        title: '加载失败！',
+        icon: 'error'
+      },1500);
+    });
   },
 
   /**

@@ -1,7 +1,7 @@
 <!--components/orderDetail/index.wxml-->
 <view wx:for="{{merchDetail}}" wx:key="merchId">
   <view class="merch-item">
-    <text>{{item.merchName}}</text>
+    <text class="merch-name">{{item.merchName}}</text>
     <text class="right-text status-text">{{item.merchStatus}}</text>
   </view>
   <view class="merch-title" bindtap="_showMerchDetail" data-merchid="{{item.merchId}}">

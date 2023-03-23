@@ -1,5 +1,6 @@
 /* components/orderDetail/index.wxss */
 .merch-item {
+  position: relative;
   padding-top: 36rpx;
   padding-bottom: 12rpx;
 }
@@ -8,6 +9,9 @@
 }
 .status-text {
   color: rgb(54, 180, 238);
+  position: absolute;
+  top: 36rpx;
+  right: 0;
 }
 .merch-title {
   padding: 35rpx 0;
@@ -34,4 +38,16 @@
   display: inline-block;
   width: 40%;
   text-align: center;
+}
+.merch-name {
+  display: -webkit-box;
+  line-height: 1.5;
+  width: 60%;
+  height: 80rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
