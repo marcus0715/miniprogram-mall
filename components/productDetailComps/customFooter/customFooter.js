@@ -1,5 +1,5 @@
 // components/customFooter/index.ts
-import {addProductsToCart} from '../../../api/shoppingCartList';
+import {addProductsToCart, changeShoppingNumber} from '../../../api/shoppingCartList';
 Component({
   /**
    * 组件的属性列表
@@ -29,6 +29,10 @@ Component({
     selectcategory: {
       type: Object,
       value: {},
+    },
+    shoppingCartList: {
+      type: [],
+      value: []
     }
 
   },
@@ -47,7 +51,8 @@ Component({
     _addToShoppingCart: function() {
       const currentPro = this.data.productInfo;
       const requestData = {
-        _id: currentPro._id,
+        _id: this.data.selectcategory.sizeId,
+        productId: currentPro._id,
         description: currentPro.description,
         openId: wx.getStorageSync('userInfo').openId,
         name: currentPro.productName,
@@ -58,14 +63,33 @@ Component({
         thumbnailUrl: this.data.selectcategory.photo ? this.data.selectcategory.photo : '',
         size: this.data.selectcategory.category ? this.data.selectcategory.category : '',
       };
-      addProductsToCart(requestData).then((resp) => {
+      let isAdded = false;
+      let addNumber, addToShoppingCartCall;
+      if (this.data.shoppingCartList.length > 0) {
+        this.data.shoppingCartList.forEach(element => {
+          if (element._id === requestData._id) {
+            isAdded = true;
+            addNumber= element.number;
+          }
+        });
+      }
+      if (isAdded) {
+        const _id = requestData._id;
+        addNumber = addNumber + requestData.number;
+        addToShoppingCartCall = changeShoppingNumber(_id, addNumber);
+      } else {
+        addToShoppingCartCall = addProductsToCart(requestData);
+      }
+      addToShoppingCartCall.then((resp) => {
         wx.showToast({
           title: '已添加至购物车！',
           icon: 'success'
         },1500);
-        this.setData({
-          cartCount: this.data.cartCount + 1
-        });
+        if (!isAdded) {
+          this.setData({
+            cartCount: this.data.cartCount + 1
+          });
+        }
       }, (error)=>{
         if(error.errCode === -1){
           wx.showToast({
