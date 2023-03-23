@@ -44,11 +44,16 @@ Page({
    * Lifecycle function--Called when page load
    */
   async onLoad() {
-    const list = await getOrderList()
-    console.log("onLoad---------------");
-    this.setData({
-      orderList: list
-    })
+    await getOrderList().then((resp)=> {
+      this.setData({
+        orderList: resp.result
+      })
+    }, (error)=> {
+      wx.showToast({
+        title: '加载订单失败！',
+        icon: 'error'
+      },1500);
+    });
   },
 
   /**
@@ -104,10 +109,10 @@ Page({
     console.log('pageScroll', e.detail)
   },
 
-  orderNoClick: function(options) {
-    console.log("orderNoClick--------------");
+  enterOrder: function(e) {
+    const transferData = e.currentTarget.dataset.orderdetail;
     wx.navigateTo({
-      url: '../orderDetail/orderDetail'
+      url: '../orderDetail/orderDetail?orderId=' + transferData._id
     })
 }
 })

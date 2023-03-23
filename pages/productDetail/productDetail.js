@@ -2,7 +2,7 @@
 import {getProductInfo} from '../../api/productList';
 import {getAddressList} from '../../api/addressList';
 import { getImageUrl } from '../../utils/tools';
-import {getShoppingCartList, addProductsToCart} from '../../api/shoppingCartList';
+import {getShoppingCartList} from '../../api/shoppingCartList';
 import QR from 'qrcode-base64'
 Page({
 
@@ -35,6 +35,13 @@ Page({
     const cartPro = e.detail;
     this.setData({
       selectcategory: cartPro
+    });
+  },
+  async onUpdateCartEvent(e) {
+    await getShoppingCartList().then( (resp)=> {
+      this.setData({
+        shoppingCartList: resp.result,
+      });
     });
   },
   onGenerateQR(){
@@ -80,6 +87,11 @@ Page({
           shoppingCartList: resp.result,
           addCartCount: resp.result.length
         });
+      }, (error)=> {
+        wx.showToast({
+          title: '加载cart信息失败',
+          icon: 'error'
+        },1500);
       });
     }
   },

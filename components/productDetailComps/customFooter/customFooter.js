@@ -81,6 +81,7 @@ Component({
         addToShoppingCartCall = addProductsToCart(requestData);
       }
       addToShoppingCartCall.then((resp) => {
+        this.triggerEvent('updatecartevent');
         wx.showToast({
           title: '已添加至购物车！',
           icon: 'success'
@@ -91,12 +92,10 @@ Component({
           });
         }
       }, (error)=>{
-        if(error.errCode === -1){
-          wx.showToast({
-            title: '加入购物车失败！',
-            icon: 'error'
-          },1500);
-        }
+        wx.showToast({
+          title: '加入购物车失败！',
+          icon: 'error'
+        },1500);
       });
     },
     _addToCart: function (e) {
