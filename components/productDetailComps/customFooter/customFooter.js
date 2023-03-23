@@ -1,4 +1,5 @@
 // components/customFooter/index.ts
+import {addProductsToCart} from '../../../api/shoppingCartList';
 Component({
   /**
    * 组件的属性列表
@@ -24,6 +25,10 @@ Component({
     selectCount: {
       type: Number,
       value: 1,
+    },
+    selectcategory: {
+      type: Object,
+      value: {},
     }
 
   },
@@ -39,10 +44,39 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    _addToCart: function (e) {
-      this.setData({
-        cartCount: this.data.cartCount + this.data.selectCount
+    _addToShoppingCart: function() {
+      const currentPro = this.data.productInfo;
+      const requestData = {
+        _id: currentPro._id,
+        description: currentPro.description,
+        openId: wx.getStorageSync('userInfo').openId,
+        name: currentPro.productName,
+        number: this.data.selectCount,
+        price: this.data.selectcategory.price,
+        originPrice: currentPro.originPrice ? currentPro.originPrice : '',
+        tag: currentPro.tag ? currentPro.tag : '',
+        thumbnailUrl: this.data.selectcategory.photo ? this.data.selectcategory.photo : '',
+        size: this.data.selectcategory.category ? this.data.selectcategory.category : '',
+      };
+      addProductsToCart(requestData).then((resp) => {
+        wx.showToast({
+          title: '已添加至购物车！',
+          icon: 'success'
+        },1500);
+        this.setData({
+          cartCount: this.data.cartCount + 1
+        });
+      }, (error)=>{
+        if(error.errCode === -1){
+          wx.showToast({
+            title: '加入购物车失败！',
+            icon: 'error'
+          },1500);
+        }
       });
+    },
+    _addToCart: function (e) {
+      this._addToShoppingCart();
     },
     _enterCart: function (e) {
       wx.reLaunch({

@@ -7,6 +7,10 @@ Component({
     productInfo: {
       type: Object,
       value: {}
+    },
+    selectcategory: {
+      type: Object,
+      value: {}
     }
   },
 

@@ -68,22 +68,7 @@ Page({
   },
 
   async getShoppingCartList() {
-    const list = await getShoppingCartList().catch(res => {
-      if(res.errCode === 1001){
-        wx.showModal({
-          title: '请求失败',
-          content: '用户未登录，请前往登录!',
-          showCancel: false,
-          complete: (res) => {
-            if (res.confirm) { 
-              wx.switchTab({
-                url: '../userCenter/index',
-              })
-            }
-          }
-        })
-      }
-    });
+    const list = await getShoppingCartList();
     console.log(list)
     const hasList = list && list.result;
     if (hasList) {

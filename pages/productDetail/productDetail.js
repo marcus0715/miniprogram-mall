@@ -2,6 +2,7 @@
 import {getProductInfo} from '../../api/productList';
 import {getAddressList} from '../../api/addressList';
 import { getImageUrl } from '../../utils/tools';
+import {getShoppingCartList, addProductsToCart} from '../../api/shoppingCartList';
 import QR from 'qrcode-base64'
 Page({
 
@@ -32,8 +33,7 @@ Page({
     this.onCloseSize();
     const cartPro = e.detail;
     this.setData({
-      addCartCount: cartPro.number,
-      selectcategory: cartPro.category
+      selectcategory: cartPro
     });
   },
   onGenerateQR(){
@@ -55,23 +55,31 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(params) {
+  async onLoad(params) {
     const requestData = {
       _id: params.id
     };
-    getProductInfo(requestData).then((resp)=>  {
+    await getProductInfo(requestData).then((resp)=>  {
       if (!resp.result[0].imgSrcList) {
         resp.result[0].imgSrcList= [getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300), getImageUrl(300, 300)]
       }
       this.setData({
-        productDetail: resp.result[0]
+        productDetail: resp.result[0],
+        selectcategory: resp.result[0].size ? resp.result[0].size[0] : {}
       });
     });
-    getAddressList().then((resp)=> {
+    await getAddressList().then((resp)=> {
       this.setData({
         addressList: resp.result
       });
     });
+    if (wx.getStorageSync('userInfo') || wx.getStorageSync('userInfo').openId) {
+      await getShoppingCartList().then( (resp)=> {
+        this.setData({
+          addCartCount: resp.result.length
+        });
+      });
+    }
   },
 
   /**

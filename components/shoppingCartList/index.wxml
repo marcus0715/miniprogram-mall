@@ -5,7 +5,7 @@
     <van-swipe-cell id="swipe-cell" right-width="{{ 70 }}" async-close bind:close="_onClose" data-id="{{item._id}}">
       <radio class="radio-button" checked="{{item.isSelected}}" color="red" data-item="{{item}}" bindtap="_onClickRadio"></radio>
       <view class="card-container">
-        <van-card price="{{item.price}}" origin-price="{{item.orginPrice}}" tag="{{item.tag}}" desc="{{item.description}}" title="{{item.name}}" lazy-load thumb="{{item.thumbnailUrl}}">
+        <van-card price="{{item.price}}" origin-price="{{item.orginPrice}}" tag="{{item.tag}}" desc="{{item.size}}" title="{{item.name}}" lazy-load thumb="{{item.thumbnailUrl}}">
           <view slot="num" class="shopping_num">
             <van-stepper value="{{item.number}}" step="1" disable-input bind:change="_onNumberChange" data-id="{{item._id}}"/>
           </view>
