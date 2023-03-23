@@ -10,13 +10,13 @@ Component({
       observer: function (newVal, oldVal) {
         if (Object.keys(newVal).length > 0) {
           this.setData({
-            selectcategory: this.data.productInfo.size[0].category
+            selectcategory: this.data.productInfo.size[0]
           });
         }
       }
     },
     selectcategory: {
-      type: String,
+      type: {},
       value: ''
     },
     selectCount: {
@@ -31,14 +31,13 @@ Component({
       type: Boolean,
       value: false
     }
-    
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    selectcategory: ''
+    selectcategory: {}
   },
 
   /**

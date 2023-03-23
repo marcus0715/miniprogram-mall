@@ -2,7 +2,7 @@
 <view>
   <view class="product-item" bindtap="_showSizeList">
     <text class="label-txt">规格</text>
-    <text class="proper-txt">{{selectcategory}}</text>
+    <text class="proper-txt">{{selectcategory.category}}</text>
     <van-icon name="arrow" class="icon-right"/>
   </view>
   <view class="product-item">

@@ -1,6 +1,6 @@
 <!--components/productDetailComps/priceBar/index.wxml-->
 <view class="price-bar">
-  <priceFormat priceInfo="{{productInfo.price}}"></priceFormat>
+  <priceFormat priceInfo="{{selectcategory.price?selectcategory.price:productInfo.price}}"></priceFormat>
   <view class="icon-right action-icon">
     <van-icon name="share-o" />
     <text class="action-txt">分享</text>

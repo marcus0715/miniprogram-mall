@@ -26,24 +26,40 @@ export const request = (option, isNeedAuthorize = false, showloading = true) => 
   }
   return new Promise((resolve, reject) => {
     if(isNeedAuthorize && (!wx.getStorageSync('userInfo') || !wx.getStorageSync('userInfo').openId)){
-      reject({errCode: 1001, errMsg: '用户未授权'})
-    }
-    const {name, data} = option
-    callFunction({
-      name,
-      data,
-      success: res =>{
-          resolve(res)
-      },
-      fail: err => {
-        reject({errCode: err.errCode, errMsg: err.errMsg})
-      },
-      complete: () => {
-        if(showloading) {
-          hideFullScreenLoading()
-        }
+      // reject({errCode: 1001, errMsg: '用户未授权'});
+      if(showloading) {
+        hideFullScreenLoading()
       }
-    })
+      wx.showModal({
+        title: '请求失败',
+        content: '用户未登录，请前往登录!',
+        showCancel: false,
+        complete: (res) => {
+          if (res.confirm) { 
+            wx.switchTab({
+              url: '../userCenter/index',
+            })
+          }
+        }
+      })
+    } else {
+      const {name, data} = option
+      callFunction({
+        name,
+        data,
+        success: res =>{
+            resolve(res)
+        },
+        fail: err => {
+          reject({errCode: err.errCode, errMsg: err.errMsg})
+        },
+        complete: () => {
+          if(showloading) {
+            hideFullScreenLoading()
+          }
+        }
+      })
+    }
   })
 }
 

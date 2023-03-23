@@ -13,7 +13,6 @@ Component({
           this.data.sizeList.forEach(element => {
             if (element.category == selectedItem.category) {
               element.selected = true;
-              element.number = this.data.steperNum;
             }
           });
           this.setData({
@@ -22,10 +21,6 @@ Component({
           });
         }
       }
-    },
-    addCartCount: {
-      type: Number,
-      value: 0
     }
   },
 
@@ -33,7 +28,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    steperNum: 1,
     sizeList: [],
     selectItem: {}
   },
@@ -53,19 +47,12 @@ Component({
         element.selected = false;
         if (element.category == selected.category) {
           element.selected = true;
-          element.number = this.data.steperNum;
+          selected.selected = true;
         }
       });
       this.setData({
         sizeList: this.data.sizeList,
         selectItem: selected
-      });
-    },
-    _sizeCount: function (e) {
-      const currentSelect = this.data.selectItem;
-      currentSelect.number = e.detail;
-      this.setData({
-        selectItem: currentSelect
       });
     },
     _addToCart: function (e) {

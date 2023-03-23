@@ -1,16 +1,8 @@
 import {shoppingCartList, replaceShoppingCartList} from '../mockData/index'
-
-// export const getShoppingCartList = () => {
-//   return new Promise(resolve=>{
-//     setTimeout(()=>{
-//       resolve(shoppingCartList)
-//     },200)
-//   })
-// }
 export const getShoppingCartList = () => {
   return wx.cloud.callFunction({
     name: 'getShoppingCartList'
-  },true)
+  }, true)
 }
 
 export const changeShoppingNumber = (productId, number) => {
@@ -21,6 +13,13 @@ export const changeShoppingNumber = (productId, number) => {
       number
     }
   })
+}
+
+export const addProductsToCart = (requstData) => {
+  return wx.cloud.callFunction({
+    name: 'addProductsToCart',
+    data: requstData
+  }, true)
 }
 
 export const removeShoppingCartItem = (productId) => {

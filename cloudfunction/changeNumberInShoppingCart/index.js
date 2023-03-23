@@ -6,7 +6,7 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 exports.main = async (event, context) => {
   const { _id } = event;
   const db = cloud.database();
-  const result = await db.collection('shoppingCart').doc(_id).update({
+  const result = await db.collection('shoppingCartList').doc(_id).update({
     data: {
       number: event.number
     }
