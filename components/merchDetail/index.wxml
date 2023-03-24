@@ -5,7 +5,7 @@
     <text class="right-text status-text">{{item.merchStatus}}</text>
   </view>
   <view class="merch-title" bindtap="_showMerchDetail" data-merchid="{{item.merchId}}">
-    <text>控制器</text>
+    <text>{{item.merchCategory}}</text>
     <van-icon wx:if="{{!item.showDetail}}" name="arrow-down" class="right-text arrow-icon"/>
     <van-icon wx:elif="{{item.showDetail}}" name="arrow-up" class="right-text arrow-icon"/>
   </view>
