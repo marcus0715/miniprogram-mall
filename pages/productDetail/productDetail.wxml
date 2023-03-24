@@ -16,7 +16,7 @@
     </view>
     <view class="comps-bg divid-line">
       <productSelected productInfo="{{productDetail}}" model:select-count="{{selectCount}}" 
-      model:show-addrs="{{showAddrs}}" model:show-size="{{showSize}}" selectcategory="{{selectcategory}}"></productSelected>
+      model:show-addrs="{{showAddrs}}" model:show-size="{{showSize}}" selectcategory="{{selectcategory}}" selectAddrs="{{selectAddrs}}"></productSelected>
     </view>
   </view>
 </scroll-view>
@@ -30,7 +30,7 @@
 <van-popup show="{{showAddrs}}" round closeable  close-icon-position="top-right" position="bottom" custom-style="height: 60%" bind:close="onCloseAddrs" class="page">
     <view class="address-list">
       <radio-group class="radio-group" bindchange="radioChange">
-            <radio class="radio-item" wx:for="{{addressList}}" wx:key="_id" value="{{item._id}}" checked="true">
+            <radio class="radio-item" wx:for="{{addressList}}" wx:key="_id" value="{{item.addressName}}" checked="{{item.checked}}">
               <text>{{item.addressName}}</text>
             </radio>
       </radio-group>

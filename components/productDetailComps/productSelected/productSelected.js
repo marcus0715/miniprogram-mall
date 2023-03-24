@@ -30,6 +30,10 @@ Component({
     showSize: {
       type: Boolean,
       value: false
+    },
+    selectAddrs: {
+      type: String,
+      value: ''
     }
   },
 

@@ -17,7 +17,8 @@ Page({
     showSize: false,
     qrBase64: '',
     addressList: [],
-    shoppingCartList: []
+    shoppingCartList: [],
+    selectAddrs: ''
   },
 
   onCloseAddrs: function () {
@@ -59,6 +60,16 @@ Page({
       qrBase64: ''
     })
   },
+  radioChange: function(e) {
+    const addressList = this.data.addressList
+    for (let i = 0, len = addressList.length; i < len; ++i) {
+      addressList[i].checked = addressList[i].addressName === e.detail.value
+    }
+    this.setData({
+      addressList,
+      selectAddrs: e.detail.value
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -77,8 +88,11 @@ Page({
       });
     });
     await getAddressList().then((resp)=> {
+      const addressList = resp.result
+      addressList[0].checked = true;
       this.setData({
-        addressList: resp.result
+        addressList,
+        selectAddrs: resp.result[0].addressName
       });
     });
     if (wx.getStorageSync('userInfo') || wx.getStorageSync('userInfo').openId) {
