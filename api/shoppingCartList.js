@@ -1,4 +1,3 @@
-import {shoppingCartList, replaceShoppingCartList} from '../mockData/index'
 export const getShoppingCartList = (openId) => {
   return wx.cloud.callFunction({
     name: 'getShoppingCartList',
